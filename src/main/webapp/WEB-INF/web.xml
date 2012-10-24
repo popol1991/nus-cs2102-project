@@ -8,7 +8,7 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
 
-    <display-name>Spring Security Tutorial Application</display-name>
+    <display-name>Food Kingdom</display-name>
 
     <!--
       - Location of the XML file that defines the root application context
@@ -19,6 +19,7 @@
         <param-value>
             classpath:applicationContext-business.xml
             /WEB-INF/applicationContext-security.xml
+            /WEB-INF/database.xml
         </param-value>
     </context-param>
 
@@ -56,14 +57,14 @@
     - Provides core MVC application controller. See bank-servlet.xml.
     -->
     <servlet>
-        <servlet-name>bank</servlet-name>
+        <servlet-name>dispatcher</servlet-name>
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
         <load-on-startup>1</load-on-startup>
     </servlet>
 
     <servlet-mapping>
-        <servlet-name>bank</servlet-name>
-        <url-pattern>*.html</url-pattern>
+        <servlet-name>dispatcher</servlet-name>
+        <url-pattern>/service/*</url-pattern>
      </servlet-mapping>
 
      <welcome-file-list>

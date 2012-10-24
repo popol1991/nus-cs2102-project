@@ -1,4 +1,4 @@
-package bigbank.web;
+package bigbank.controller;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

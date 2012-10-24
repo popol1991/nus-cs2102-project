@@ -2,41 +2,77 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" class="wf-fftisawebpro1fftisawebpro2-n4-active wf-fftisawebpro1fftisawebpro2-i4-active wf-fftisawebpro1fftisawebpro2-n7-active wf-brandongrotesque1brandongrotesque2-n4-active wf-brandongrotesque1brandongrotesque2-n7-active wf-active">
 
-<html>
-  <head>
-      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-      <link rel="stylesheet" href="<c:url value='/static/css/tutorial.css'/>" type="text/css" />
-      <title>Home Page</title>
-  </head>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<link rel="stylesheet" href="<c:url value='/misc/stylesheets/style.css'/>" type="text/css" />
+		<link rel="stylesheet" href="<c:url value='/misc/stylesheets/960.css'/>" type="text/css" />
+		<script type="text/javascript" src="<c:url value='/misc/js/jquery-1.8.1.min.js'/>"></script>
+		<script type="text/javascript" src="<c:url value='/misc/js/main.js'/>"></script>
+		<title>Food Empire</title>
+	</head>
 <body>
-<div id="content">
-<h1>Home Page</h1>
-<p>
-Anyone can view this page.
-</p>
-<p>
-While anyone can also view the <a href="listAccounts.html">list accounts</a> page, you must be authorized to post to an Account from the list accounts page.
-</p>
-<p>
-Your principal object is....: <%= request.getUserPrincipal() %>
-</p>
-<sec:authorize url='/secure/index.jsp'>
-<p>
-You can currently access "/secure" URLs.
-</p>
-</sec:authorize>
-<sec:authorize url='/secure/extreme/index.jsp'>
-<p>
-You can currently access "/secure/extreme" URLs.
-</p>
-</sec:authorize>
-
-<p>
-<a href="secure/index.jsp">Secure page</a></p>
-<p><a href="secure/extreme/index.jsp">Extremely secure page</a></p>
+<div id="container">
+    <div id="header" class="container_16">
+        <ul class="nav">
+            <li><a href="/tutorial">Home</a></li>
+            <li><a href="/tutorial/service/manage">My Restaurants</a></li>
+            <li><a href="/tutorial/service/main/about">About</a></li>
+            <li><a href="/tutorial/service/account/login">Login</a></li>
+        </ul>
+    </div> 
 </div>
-</body>
-</html>
+<div class="wrapper container_16">
+	<div id="services">
+		<h1 class="aligncenter divider">Search</h1>
+		<div class="whitewrapper">
+			<div class="hd"></div>
+			<form class="search">
+				<table>
+					<tr>
+						<td>Category</td>
+						<td>
+							<select name="category">
+								<option value="Chinese" selected="selected"/>Chinese</option>
+								<option value="Western" />Western</option>
+								<option value="Korean" />Korean</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td>Keyword:</td>
+						<td>
+							<input name="keyword" type="text" value="restaurant name" />
+						</td>
+					</tr>
+					<tr>
+						<td>Area:</td>
+						<td>
+							<select name="area">
+								<option value="Kent Ridge" selected="selected"/>Kent Ridge</option>
+								<option value="Harbourfront" />Harbourfront</option>
+								<option value="Holland Village" />Holland Village</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td>From:</td>
+						<td><input name="lowprice" type="text" value="$"></td>
+						<td>To:</td>
+						<td><input name="highprice" type="text" value="$"></td>
+					</tr>
+					<tr>
+						<td><input type="submit" value="Search" /></td>
+					</tr>
+				</table>	
+			</form>
+		</div>
+	</div>
+	<h1 id="searchHeader" class="aligncenter divider">Hot Restaurants</h1>
+	<div id="searchResults"> </div>
+</div>
+</body></html>
