@@ -11,6 +11,6 @@ public class ManageController {
 
 	@RequestMapping(method = RequestMethod.GET)
 	public String doNothing() {
-		return "listAccounts";
+		return "manage";
 	}
 }
