@@ -18,7 +18,7 @@
     <http pattern="/loggedout.jsp" security="none"/>
 
     <http use-expressions="true">
-        <intercept-url pattern="/service/manage/**" access="hasRole('admin')"/>
+        <intercept-url pattern="/service/manage/**" access="isAuthenticated()"/>
         <intercept-url pattern="/secure/extreme/**" access="hasRole('supervisor')"/>
         <intercept-url pattern="/secure/**" access="isAuthenticated()" />
         <!--
@@ -26,7 +26,8 @@
              adopt a whitelisting approach where access is not allowed by default
           -->
         <intercept-url pattern="/**" access="permitAll" />
-        <form-login />
+        <form-login login-page="/service/account/login" default-target-url="/main"
+            authentication-failure-url="/service/account/fail" />
         <logout logout-success-url="/loggedout.jsp" delete-cookies="JSESSIONID"/>
         <remember-me />
         
@@ -42,7 +43,7 @@
         <authentication-provider>
             <jdbc-user-service data-source-ref="dataSource"
                 users-by-username-query="
-                    select email,password,name
+                    select email,password,enabled
                     from user where email=?"
                 authorities-by-username-query="
                 	select email, authority
