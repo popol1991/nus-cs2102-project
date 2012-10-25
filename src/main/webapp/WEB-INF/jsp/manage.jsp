@@ -28,6 +28,9 @@
 				</div>
 			</c:forEach> 
 		</div>
+		<div class="aligncenter">
+			<a href=""><button>Add New</button></a>
+		</div>
 	</div>
 </body>
 

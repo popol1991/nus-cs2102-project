@@ -183,3 +183,23 @@ div.whitewrapper {
 .whitewrapper .hd {
 	border-top: 6px solid #D12026;
 }
+
+button {
+	color: white;
+	border-radius: 14px;
+	-moz-border-radius: 14px;
+	-webkit-border-radius: 14px;
+	font-size:  13px;
+	font-weight: bold;
+	height: 42px;
+	padding: : 0 10px;
+	cursor: pointer;
+	background: #D12026;
+	display: inline;
+	width: 150px;
+	-webkit-appearance: none;
+}
+
+button:hover {
+	opacity: 0.6;
+}
