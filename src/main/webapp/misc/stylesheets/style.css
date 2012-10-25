@@ -110,17 +110,14 @@ body { background: url("http://www.studionudge.com/imgs/bg.png"); background-rep
 	.border-left { border-left: 2px solid #d7d7d7; }
 
 /* Footer */
-#charleston { background-attachment: scroll; background-color: transparent; background-image: url("http://www.studionudge.com/imgs/charleston_bg.jpg"); background-position: top center; background-repeat: no-repeat; height: 291px; display: block; margin: 0px auto; width: 100%; }
-
-#footer { background-color: #000; height: 250px; padding-top: 50px; width: 100%; }
+#footer { background-color: #000; height: 1px; padding-top: 50px; width: 100%; }
 	#footer p { font-size: 14px; color: #ABABAB; }
 	#footer h3 { color: #fff; padding-bottom: 8px; letter-spacing: 0.06em; }
 	#footer a { color: #7ecfbc; }
 	#footer a:hover { text-decoration: underline; }
 	#footer span { margin-bottom: 10px; }
 
-#footer .col { width: 200px; padding-left: 40px; float: left; display: inline; position: relative; }	
-
+#footer .col { width: 200px; padding-left: 40px; float: left; display: inline; position: relative; }
 .feed { background: url("http://www.studionudge.com/imgs/bird.png"); background-position: 0px 35px; background-repeat: no-repeat; }
 .light { font-family: "ff-tisa-web-pro-1","ff-tisa-web-pro-2", Georgia, serif; color: #ABABAB; }
 .sm { font-family: brandon-grotesque-1, brandon-grotesque-2, sans-serif; font-weight: 700; font-style: normal; font-size: 17px; text-transform: uppercase; }

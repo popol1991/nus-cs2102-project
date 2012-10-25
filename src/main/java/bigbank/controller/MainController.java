@@ -11,22 +11,17 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import bigbank.bean.Restaurant;
+import bigbank.service.RestaurantService;
 
 @Controller
 @RequestMapping(value = "/main")
 public class MainController {
-	//@Autowired
-	//RestaurantService restService;
+	@Autowired
+	RestaurantService restService;
 	
 	@RequestMapping(value = "/hotshops", method = RequestMethod.GET)
 	public @ResponseBody List<Restaurant> getHotShops() {
-		//return restService.getTopRestaurants();
-		Restaurant r = new Restaurant();
-		r.setAddress("biz");
-		r.setName("western");
-		List<Restaurant> res = new ArrayList<Restaurant>();
-		res.add(r);
-		return res;
+		return restService.getTopRestaurants();
 	}
 	
 	@RequestMapping(value = "/about", method= RequestMethod.GET)

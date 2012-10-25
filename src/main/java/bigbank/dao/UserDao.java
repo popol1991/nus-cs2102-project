@@ -18,7 +18,7 @@ public class UserDao extends BasicDao {
 	public User getUserByEmail(String email) {
 		StringBuilder sql = new StringBuilder();
 		Map<String, Object> parameters = new HashMap<String, Object>();
-		sql.append("select * from members where email=:email");
+		sql.append("select * from user where email=:email");
 		parameters.put("email", email);
 
 		List<User> resultList = jdbcTemplate.query(sql.toString(), parameters,

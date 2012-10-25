@@ -11,6 +11,7 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<link rel="stylesheet" href="<c:url value='/misc/stylesheets/style.css'/>" type="text/css" />
 		<link rel="stylesheet" href="<c:url value='/misc/stylesheets/960.css'/>" type="text/css" />
+		<script type="text/javascript" src="<c:url value='/misc/js/jquery-1.8.1.min.js'/>"></script>
 	</head>
 
 <body>
@@ -18,6 +19,14 @@
 	<div class="wrapper container_16">
 		<div id="services">
 			<h1 class="aligncenter divider">My Restaurants</h1>
+		</div>
+		<div class="restaurantlist">
+			<c:forEach var="rest" items="${restList}" varStatus="status"> 
+	        	<div class="whitewrapper">
+					<div class="hd"></div> 
+					<p>${rest.name} ${rest.address} ${rest.category}</p>
+				</div>
+			</c:forEach> 
 		</div>
 	</div>
 </body>

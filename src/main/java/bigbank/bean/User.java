@@ -1,11 +1,12 @@
 package bigbank.bean;
 
 public class User {
+	private int id;
 	private String email;
 	private String password;
 	private String name;
 	private String confirmPassword;
-	private boolean isAdmin;
+	private String authority;
 
 	public void setEmail(String email) {
 		this.email = email;
@@ -31,19 +32,27 @@ public class User {
 		this.confirmPassword = confirmPassword;
 	}
 
-	public boolean isAdmin() {
-		return isAdmin;
-	}
-
-	public void setAdmin(boolean isAdmin) {
-		this.isAdmin = isAdmin;
-	}
-
 	public String getName() {
 		return name;
 	}
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getAuthority() {
+		return authority;
+	}
+
+	public void setAuthority(String authority) {
+		this.authority = authority;
 	}
 }

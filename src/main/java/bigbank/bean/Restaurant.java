@@ -3,14 +3,23 @@ package bigbank.bean;
 import java.sql.Date;
 
 public class Restaurant {
+	private int id;
 	private String name;
 	private String address;
 	private String category;
 	private boolean isApproved;
-	private int averagePrice;
+	private int avgPrice;
 	private String area;
-	private String owner;
-	private Date datetime;
+	private Date createTime;
+	private int ownerId;
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
 
 	public String getName() {
 		return name;
@@ -44,12 +53,12 @@ public class Restaurant {
 		this.isApproved = isApproved;
 	}
 
-	public int getAveragePrice() {
-		return averagePrice;
+	public int getAvgPrice() {
+		return avgPrice;
 	}
 
-	public void setAveragePrice(int averagePrice) {
-		this.averagePrice = averagePrice;
+	public void setAvgPrice(int avgPrice) {
+		this.avgPrice = avgPrice;
 	}
 
 	public String getArea() {
@@ -60,19 +69,19 @@ public class Restaurant {
 		this.area = area;
 	}
 
-	public String getOwner() {
-		return owner;
+	public Date getCreateTime() {
+		return createTime;
 	}
 
-	public void setOwner(String owner) {
-		this.owner = owner;
+	public void setCreateTime(Date createTime) {
+		this.createTime = createTime;
 	}
 
-	public Date getDatetime() {
-		return datetime;
+	public int getOwnerId() {
+		return ownerId;
 	}
 
-	public void setDatetime(Date datetime) {
-		this.datetime = datetime;
+	public void setOwnerId(int ownerId) {
+		this.ownerId = ownerId;
 	}
 }
