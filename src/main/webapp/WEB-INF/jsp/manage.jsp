@@ -24,12 +24,19 @@
 			<c:forEach var="rest" items="${restList}" varStatus="status"> 
 	        	<div class="whitewrapper">
 					<div class="hd"></div> 
-					<p>${rest.name} ${rest.address} ${rest.category}</p>
+					<p>${rest.name} ${rest.address} ${rest.category} ${rest.isApproved}</p>
+					<a href=""><button id="small">delete</button></a>
+					<a href=""><button id="small">modify</button></a>
+					<c:if test="${rest.isApproved == 0}" >
+						<sec:authorize access="hasRole('admin')">
+							<a href=""><button id="small">approve</button></a>
+						</sec:authorize>
+					</c:if>
 				</div>
 			</c:forEach> 
 		</div>
 		<div class="aligncenter">
-			<a href=""><button>Add New</button></a>
+			<a href=""><button id="big">Add New</button></a>
 		</div>
 	</div>
 </body>

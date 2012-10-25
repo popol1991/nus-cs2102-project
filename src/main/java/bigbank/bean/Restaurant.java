@@ -7,7 +7,7 @@ public class Restaurant {
 	private String name;
 	private String address;
 	private String category;
-	private boolean isApproved;
+	private int isApproved;
 	private int avgPrice;
 	private String area;
 	private Date createTime;
@@ -45,11 +45,11 @@ public class Restaurant {
 		this.category = category;
 	}
 
-	public boolean isApproved() {
+	public int getIsApproved() {
 		return isApproved;
 	}
 
-	public void setApproved(boolean isApproved) {
+	public void setIsApproved(int isApproved) {
 		this.isApproved = isApproved;
 	}
 

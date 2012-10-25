@@ -178,28 +178,42 @@ div.whitewrapper {
 	-webkit-box-shadow: 0 0 10px #BBB;
 	-moz-box-shadow: 0 0 10px #bbb;
 	box-shadow: 0 0 10px #BBB;
-	margin-bottom: 15px;
+	margin-bottom: 30px;
 }
 .whitewrapper .hd {
 	border-top: 6px solid #D12026;
 }
 
+
 button {
 	color: white;
-	border-radius: 14px;
-	-moz-border-radius: 14px;
-	-webkit-border-radius: 14px;
-	font-size:  13px;
 	font-weight: bold;
-	height: 42px;
 	padding: : 0 10px;
 	cursor: pointer;
 	background: #D12026;
 	display: inline;
-	width: 150px;
 	-webkit-appearance: none;
 }
 
-button:hover {
-	opacity: 0.6;
+#big{
+	border-radius: 14px;
+	-moz-border-radius: 14px;
+	-webkit-border-radius: 14px;
+	font-size:  15px;
+	height: 42px;
+	width: 150px;
+}
+
+#big:hover {
+	opacity: 0.6;	
+}
+
+#small{
+	border-radius: 10px;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	font-size:  11px;
+	float: right;
+	height: 20px;
+	width: 75px;
 }
