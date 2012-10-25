@@ -17,7 +17,8 @@ public class RestaurantService {
 	RestaurantDao restDao;
 
 	public List<Restaurant> getTopRestaurants() {
-		return restDao.getTopNReviewedRestaurants(Constants.TOP_N);
+		//TODO return top N restaurants
+		return restDao.getAllRestaurants();
 	}
 
 	public List<Restaurant> getRestaurantsByQuery(Map<String, String> query) {
@@ -26,6 +27,16 @@ public class RestaurantService {
 
 	public List<Restaurant> getRestaurantsByOwnerId(int ownerId) {
 		return restDao.getRestaurantsByOwnerId(ownerId);
+	}
+
+	public boolean approveRestaurantWithId(int restId) {
+		Restaurant rest = restDao.getRestaurantById(restId);
+		rest.setIsApproved(1);
+		return restDao.updateRestaurantById(restId, rest);
+	}
+
+	public boolean removeRestaurantById(int restId) {
+		return restDao.removeRestaurantById(restId);
 	}
 	
 }

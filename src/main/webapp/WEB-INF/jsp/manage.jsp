@@ -12,6 +12,37 @@
 		<link rel="stylesheet" href="<c:url value='/misc/stylesheets/style.css'/>" type="text/css" />
 		<link rel="stylesheet" href="<c:url value='/misc/stylesheets/960.css'/>" type="text/css" />
 		<script type="text/javascript" src="<c:url value='/misc/js/jquery-1.8.1.min.js'/>"></script>
+		<script type="text/javascript">
+			function approve (restId) {
+					$.ajax({
+						url:"manage/approve/"+restId,
+						success: function(message) {
+							if (message == true) {
+								alert("restaurant approved");
+								$('button.restId'+restId).remove();
+							} else {
+								alert("approve failed!");
+							}
+						}
+					});
+			};
+			function remove (restId) {
+				var confirm = window.confirm("Are you sure to delete this restaurant?");
+				if (confirm == true) {
+					$.ajax({
+						url:"manage/delete/"+restId,
+						success: function(message) {
+							if (message == true) {
+								alert("restaurant deleted");
+								$('div#restId'+restId).remove();
+							} else {
+								alert("delete failed!");
+							}
+						}
+					});
+				}
+			}
+		</script>
 	</head>
 
 <body>
@@ -22,14 +53,14 @@
 		</div>
 		<div class="restaurantlist">
 			<c:forEach var="rest" items="${restList}" varStatus="status"> 
-	        	<div class="whitewrapper">
+	        	<div class="whitewrapper" id="restId${rest.id}">
 					<div class="hd"></div> 
 					<p>${rest.name} ${rest.address} ${rest.category} ${rest.isApproved}</p>
-					<a href=""><button id="small">delete</button></a>
-					<a href=""><button id="small">modify</button></a>
+					<button id="small" onclick="remove(${rest.id})">delete</button>
+					<button id="small">modify</button>
 					<c:if test="${rest.isApproved == 0}" >
 						<sec:authorize access="hasRole('admin')">
-							<a href=""><button id="small">approve</button></a>
+							<button id="small" class="restId${rest.id}" onclick="approve(${rest.id})">approve</button>
 						</sec:authorize>
 					</c:if>
 				</div>

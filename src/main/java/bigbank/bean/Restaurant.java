@@ -11,7 +11,7 @@ public class Restaurant {
 	private int avgPrice;
 	private String area;
 	private Date createTime;
-	private int ownerId;
+	private int owner;
 
 	public int getId() {
 		return id;
@@ -77,11 +77,11 @@ public class Restaurant {
 		this.createTime = createTime;
 	}
 
-	public int getOwnerId() {
-		return ownerId;
+	public int getOwner() {
+		return owner;
 	}
 
-	public void setOwnerId(int ownerId) {
-		this.ownerId = ownerId;
+	public void setOwner(int owner) {
+		this.owner = owner;
 	}
 }

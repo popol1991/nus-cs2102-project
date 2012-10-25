@@ -4,8 +4,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import bigbank.bean.User;
 import bigbank.service.RestaurantService;
@@ -28,5 +30,15 @@ public class ManageController {
 		
 		model.addAttribute("restList", restService.getRestaurantsByOwnerId(user.getId()));
 		return "manage";
+	}
+	
+	@RequestMapping(value = "/approve/{restId}")
+	public @ResponseBody boolean approveRestaurantById(@PathVariable int restId) {
+		return restService.approveRestaurantWithId(restId);
+	}
+	
+	@RequestMapping(value = "/delete/{restId}")
+	public @ResponseBody boolean deleteRestaurantById(@PathVariable int restId) {
+		return restService.removeRestaurantById(restId);
 	}
 }
