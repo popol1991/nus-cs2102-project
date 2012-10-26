@@ -36,7 +36,7 @@ public class AccountController {
 		}
 		if (userService.createUser(user)) {
 			System.out.println("succeed");
-			return "login";
+			return "main";
 		} else {
 			System.out.println("failed");
 			return "register";

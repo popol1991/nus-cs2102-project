@@ -1,14 +1,19 @@
 package bigbank.controller;
 
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import bigbank.bean.Restaurant;
 import bigbank.bean.User;
 import bigbank.service.RestaurantService;
 import bigbank.service.UserService;
@@ -40,5 +45,15 @@ public class ManageController {
 	@RequestMapping(value = "/delete/{restId}")
 	public @ResponseBody boolean deleteRestaurantById(@PathVariable int restId) {
 		return restService.removeRestaurantById(restId);
+	}
+	
+	@RequestMapping(value = "/modify", method = RequestMethod.GET) 
+	public void newRestModel(Model model) {
+		model.addAttribute("restaurant", new Restaurant());
+	}
+	
+	@RequestMapping(value = "/modify", method = RequestMethod.POST) 
+	public @ResponseBody boolean modifyRestaurant(@ModelAttribute Restaurant rest) {
+		return restService.updateRestaurant(rest);
 	}
 }

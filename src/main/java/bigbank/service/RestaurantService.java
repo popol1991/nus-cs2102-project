@@ -38,5 +38,25 @@ public class RestaurantService {
 	public boolean removeRestaurantById(int restId) {
 		return restDao.removeRestaurantById(restId);
 	}
+
+	public boolean updateRestaurant(Restaurant rest) {
+		Restaurant old = restDao.getRestaurantById(rest.getId());
+		if (!old.getName().equals(rest.getName())) {
+			old.setName(rest.getName());
+		}
+		if (!old.getAddress().equals(rest.getAddress())) {
+			old.setAddress(rest.getAddress());
+		}
+		if (!old.getCategory().equals(rest.getCategory())) {
+			old.setCategory(rest.getCategory());
+		}
+		if (old.getAvgPrice() != rest.getAvgPrice()) {
+			old.setAvgPrice(rest.getAvgPrice());
+		}
+		if (old.getArea() != rest.getArea()) {
+			old.setArea(rest.getArea());
+		}
+		return restDao.updateRestaurantById(rest.getId(), old);
+	}
 	
 }

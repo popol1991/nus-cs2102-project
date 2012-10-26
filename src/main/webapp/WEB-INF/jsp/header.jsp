@@ -7,7 +7,7 @@
             <li><a href="/tutorial/service/manage">My Restaurants</a></li>
             <li><a href="/tutorial/service/main/about">About</a></li>
             <li><a href="/tutorial/service/user/"><sec:authentication property="principal.username" /></a></li>
-            <li><a href="/tutorial/service/account/logout">Logout</a></li>
+            <li><a href="/tutorial/j_spring_security_logout">Logout</a></li>
         </ul>
     </div> 
 </div>

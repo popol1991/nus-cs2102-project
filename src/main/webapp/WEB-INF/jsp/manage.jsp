@@ -12,7 +12,34 @@
 		<link rel="stylesheet" href="<c:url value='/misc/stylesheets/style.css'/>" type="text/css" />
 		<link rel="stylesheet" href="<c:url value='/misc/stylesheets/960.css'/>" type="text/css" />
 		<script type="text/javascript" src="<c:url value='/misc/js/jquery-1.8.1.min.js'/>"></script>
+		<script type="text/javascript" src="<c:url value='/misc/js/general.js'/>"></script>
 		<script type="text/javascript">
+			var temp;
+			function cancel () {
+				var rest = $('div'+id);
+				rest.slideUp();
+				rest.slideToggle();
+				rest.html(temp);
+			};
+			function submitModify (id) {
+				$.get("manage/modify");
+				var form = $('form'+id);
+				$.post("manage/modify", 'id='+id.replace("#restId","")+'&'+form.serialize(), 
+					function() {
+						var rest = $('div'+id);
+						rest.slideUp();
+						rest.slideToggle();
+						rest.html(getModifiedInfo(id,
+												  $(id+' [name=name]').val(),
+												  $(id+' [name=address]').val(),
+												  $(id+' [name=category]').val(),
+												  $(id+' [name=avgPrice]').val(),
+												  $(id+' [name=area]').val()
+												 ));
+					}
+				);
+				return false;
+			};	
 			function approve (restId) {
 					$.ajax({
 						url:"manage/approve/"+restId,
@@ -41,7 +68,22 @@
 						}
 					});
 				}
-			}
+			};
+			function modify (restId) {
+				id = "#restId"+restId;
+				var rest = $('div'+id);
+				temp = rest.html();
+				rest.slideUp();
+				rest.html(getFormHtml(id,
+									  $(id+" #name").text(),
+									  $(id+" #address").text(),
+									  $(id+" #category").text(),
+									  $(id+" #avg").text(),
+									  $(id+" #area").text()
+									 ));
+				rest.slideToggle();
+			};
+
 		</script>
 	</head>
 
@@ -52,12 +94,33 @@
 			<h1 class="aligncenter divider">My Restaurants</h1>
 		</div>
 		<div class="restaurantlist">
-			<c:forEach var="rest" items="${restList}" varStatus="status"> 
+			<c:forEach var="rest" items="${restList}" varStatus="status">
 	        	<div class="whitewrapper" id="restId${rest.id}">
 					<div class="hd"></div> 
-					<p>${rest.name} ${rest.address} ${rest.category} ${rest.isApproved}</p>
+					<ul>
+						<li>
+							<label>Name</label>
+							<span id='name'>${rest.name}</span>
+						</li>
+						<li>
+							<label>Address</label>
+							<span id='address'>${rest.address}</span>
+						</li>
+						<li>
+							<label>Category</label>
+							<span id='category'>${rest.category}</span>
+						</li>
+						<li>
+							<label>Average Price</label>
+							<span id='avg'>${rest.avgPrice}</span>
+						</li>
+						<li>
+							<label>Area</label>
+							<span id='area'>${rest.area}</span>
+						</li>
+					</ul>
 					<button id="small" onclick="remove(${rest.id})">delete</button>
-					<button id="small">modify</button>
+					<button id="small" onclick="modify(${rest.id})">modify</button>
 					<c:if test="${rest.isApproved == 0}" >
 						<sec:authorize access="hasRole('admin')">
 							<button id="small" class="restId${rest.id}" onclick="approve(${rest.id})">approve</button>
