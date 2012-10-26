@@ -73,6 +73,7 @@
 		</div>
 	</div>
 	<h1 id="searchHeader" class="aligncenter divider">Hot Restaurants</h1>
-	<div id="searchResults"> </div>
+	<div id="searchResults">
+	</div>
 </div>
 </body></html>

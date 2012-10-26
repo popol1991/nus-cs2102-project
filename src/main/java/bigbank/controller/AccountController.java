@@ -1,7 +1,7 @@
 package bigbank.controller;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -16,21 +16,25 @@ import bigbank.service.UserService;
 public class AccountController {
 	@Autowired
 	UserService userService;
-	
-	@RequestMapping(value = "login", method = RequestMethod.GET) 
+
+	@RequestMapping(value = "login", method = RequestMethod.GET)
 	public String createLoginForm(Model model) {
-		return "login";
+		Object principle = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		if (principle instanceof String) {
+			return "login";
+		}
+		return "main";
 	}
-	
-	@RequestMapping(value = "register", method = RequestMethod.GET) 
+
+	@RequestMapping(value = "register", method = RequestMethod.GET)
 	public String createRegisterForm(Model model) {
 		model.addAttribute("newuser", new User());
 		return "register";
 	}
-	
+
 	@RequestMapping(value = "register", method = RequestMethod.POST)
 	public String newUserRegister(@ModelAttribute User user, Model model) {
-		model.addAttribute("newuser",user);
+		model.addAttribute("newuser", user);
 		if (!user.getPassword().equals(user.getConfirmPassword())) {
 			return "register";
 		}

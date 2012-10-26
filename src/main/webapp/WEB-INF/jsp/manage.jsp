@@ -83,7 +83,10 @@
 									 ));
 				rest.slideToggle();
 			};
-
+			function addNew () {
+				var div = $('<div class="whitewrapper"><div class="hd"></div></div>').append(getFormHtml()).appendTo($('.restaurantlist'));
+				div.slideDown();
+			}
 		</script>
 	</head>
 
@@ -130,7 +133,7 @@
 			</c:forEach> 
 		</div>
 		<div class="aligncenter">
-			<a href=""><button id="big">Add New</button></a>
+			<button id="big" onclick="addNew()">Add New</button>
 		</div>
 	</div>
 </body>
