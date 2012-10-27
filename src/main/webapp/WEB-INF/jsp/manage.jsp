@@ -16,7 +16,14 @@
     <link rel="stylesheet" href="<c:url value='/misc/stylesheets/style.css'/>" type="text/css" />
 
     <script type="text/javascript" src="<c:url value='/misc/js/jquery-1.8.1.min.js'/>"></script>
+    <script type="text/javascript" src="<c:url value='/misc/js/jquery.jeditable.js'/>"></script>
     <script type="text/javascript">
+    	$(document).ready(function() {
+    		$('.edit').editable("/tutorial/service/manage/modify", {
+    			indicator : 'Saving...',
+    			tooltip   : 'Click to edit...'
+    		});
+    	});
     	function approve (restId) {
           $.ajax({
             url:"manage/approve/"+restId,
@@ -46,20 +53,6 @@
 	        });
 	      }
       };
-      function modify (restId) {
-        id = "#restId"+restId;
-        var rest = $('div'+id);
-        temp = rest.html();
-        rest.slideUp();
-        rest.html(getFormHtml(id,
-                    $(id+" #name").text(),
-                    $(id+" #address").text(),
-                    $(id+" #category").text(),
-                    $(id+" #avg").text(),
-                    $(id+" #area").text()
-                   ));
-        rest.slideToggle();
-      };
     </script>
 </head>
 
@@ -73,22 +66,17 @@
 	            <li id="${rest.id}">
 	            	<div class="arrow"></div>
 	            	<div class="fact">
-	            		<h2>${rest.name}</h2>
+	            		<h2 class="edit" id="name">${rest.name}</h2>
 	            		<p>
 	            			<table width="300">
 	            				<tr>
 	            					<td width="130">Address:</td>
-	            					<td>${rest.name}</td>
-	            					<td><button id="small" onclick="modify(${rest.id})">modify</button></td>
-	            				</tr>
-	            				<tr>
-	            					<td>Category:</td>
-	            					<td>${rest.category}</td>
+	            					<td class="edit" id="address">${rest.address}</td>
 	            					<td><button id="small" onclick="remove(${rest.id})">delete</button></td>
 	            				</tr>
 	            				<tr>
-	            					<td>Average Price:</td>
-	            					<td>${rest.avgPrice}</td>
+	            					<td>Category:</td>
+	            					<td class="edit" id="category">${rest.category}</td>
 	            					<td>
 	            						<c:if test="${rest.isApproved == 0}" >
 	            							<sec:authorize access="hasRole('admin')">
@@ -98,8 +86,12 @@
 	            					</td>
 	            				</tr>
 	            				<tr>
+	            					<td>Average Price:</td>
+	            					<td class="edit" id="avgPrice">${rest.avgPrice}</td>
+	            				</tr>
+	            				<tr>
 	            					<td>Area:</td>
-	            					<td>${rest.area}</td>
+	            					<td class="edit" id="area">${rest.area}</td>
 	            				</tr>
 	            			</table>
 	            		</p>
