@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="<c:url value='/misc/stylesheets/style.css'/>" type="text/css" />
 
     <script type="text/javascript" src="<c:url value='/misc/js/jquery-1.8.1.min.js'/>"></script>
-    <!-- <script type="text/javascript" src="<c:url value='/misc/js/main.js'/>"></script> -->
+    <script type="text/javascript" src="<c:url value='/misc/js/main.js'/>"></script> 
 </head>
 
 <body>
@@ -31,15 +31,10 @@
     <hgroup>
       <h1>Hot Restaurants</h1>
     </hgroup>
-    <ul id="restaurant_list">
-        <li>
-          <a href="http://alphalab.org">
-            <img src="/tutorial/misc/image/restaurant/test.jpeg" height="60" />
-            <h2>AlphaLab.</h2>
-            <p>Pittsburgh's Startup Accelerator.</p>
-          </a>
-        </li>
-      </ul>
+    <ul id="restaurant_list_1">
+    </ul>
+    <ul id="restaurant_list_2">
+    </ul>
   </section>
   <section>
     <hgroup>

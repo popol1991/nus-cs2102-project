@@ -13,49 +13,44 @@ $(document).ready(function() {
 });
 
 function addRestaurantListToPage(data) {
+    var count = 0;
     $.each(data, function(index, obj) {
-        var div;
-        div = $('<div />' , {
-            class: 'whitewrapper'
-        });
+        var li = $('<li />');
+        var a = $('<a />').appendTo(li);
 
-        $('<div />', {
-            class: 'hd'
-        }).appendTo(div);
-
-        var attrList = new Array();
-        var pre,mid,post;
-        pre = "<li><label>";
-        mid = "</label>\n<span>";
-        post = "</span>";
+        var img,h2,p;
+        img = $('<img />');
+        h2 = $('<h2 />');
+        p = $('<p />');
         $.each(obj, function(key, val) {
             switch (key) {
+                case "id":
+                    a.attr("href","/tutorial/service/restaurant/"+val);
+                    img.attr("src","/tutorial/misc/image/restaurant/"+val+".jpeg");
+                    img.attr("height",60);
+                    break;
                 case "name":
-                    attrList[0] = pre+"Name"+mid+val+post;
+                    h2.text(val);
                     break;
                 case "address":
-                    attrList[1] = pre+"Address"+mid+val+post;
+                    p.html("Address: "+val);
                     break;
                 case "category":
-                    attrList[2] = pre+"Category"+mid+val+post;
-                    break;
-                case "avgPrice":
-                    attrList[3] = pre+"Average Price"+mid+val+post;
-                    break;
-                case "area":
-                    attrList[4] = pre+"Area"+mid+val+post;
+                    p.html(p.html()+"<br/>Category: "+val);
                     break;
                 default:
                     break;
             }
         });
 
-        var restList = $('<ul />');
-        for (i=0;i<5;i++) {
-            restList.html(restList.html() + attrList[i]);
+        img.appendTo(a);
+        h2.appendTo(a);
+        p.appendTo(a);
+        if (count<5) {
+            li.appendTo($('#restaurant_list_1'));
+        } else if (count<10) {
+            li.appendTo($('#restaurant_list_2'));
         }
-
-        restList.appendTo(div);
-        div.appendTo($('#searchResults'));
+        count++;
     });
 }

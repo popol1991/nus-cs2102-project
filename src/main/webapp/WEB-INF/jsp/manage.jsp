@@ -9,8 +9,10 @@
 
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<link rel="stylesheet" href="<c:url value='/misc/stylesheets/style.css'/>" type="text/css" />
-		<link rel="stylesheet" href="<c:url value='/misc/stylesheets/960.css'/>" type="text/css" />
+		<link rel="stylesheet" href="<c:url value='/misc/stylesheets/reset.css'/>" type="text/css" />
+    	<link rel="stylesheet" href="<c:url value='/misc/stylesheets/font.css'/>" type="text/css" />
+    	<link rel="stylesheet" href="<c:url value='/misc/stylesheets/style.css'/>" type="text/css" />
+
 		<script type="text/javascript" src="<c:url value='/misc/js/jquery-1.8.1.min.js'/>"></script>
 		<script type="text/javascript" src="<c:url value='/misc/js/general.js'/>"></script>
 		<script type="text/javascript">
