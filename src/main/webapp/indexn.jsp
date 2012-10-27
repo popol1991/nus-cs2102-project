@@ -20,7 +20,7 @@
 </head>
 
 <body>
-<%@ include file="header.jsp" %>
+<%@ include file="WEB-INF/jsp/header.jsp" %>
 <section class="our-projects" id = "our-projects">
 <div class="container">
   <h1 class="section-title">
@@ -31,10 +31,15 @@
     <hgroup>
       <h1>Hot Restaurants</h1>
     </hgroup>
-    <ul id="restaurant_list_1">
-    </ul>
-    <ul id="restaurant_list_2">
-    </ul>
+    <ul id="restaurant_list">
+        <li>
+          <a href="http://alphalab.org">
+            <img src="/tutorial/misc/image/restaurant/test.jpeg" height="60" />
+            <h2>AlphaLab.</h2>
+            <p>Pittsburgh's Startup Accelerator.</p>
+          </a>
+        </li>
+      </ul>
   </section>
   <section>
     <hgroup>
@@ -43,6 +48,6 @@
   </section>
 </div>
 </section>
-<%@ include file="footer.jsp" %>
+<%@ include file="WEB-INF/jsp/footer.jsp" %>
 </body>
 </html>

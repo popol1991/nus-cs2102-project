@@ -7,7 +7,7 @@ $(document).ready(function() {
       })
       return false;
     });
-    $.getJSON('./service/main/hotshops', function(data) {
+    $.getJSON('/tutorial/service/main/hotshops', function(data) {
         addRestaurantListToPage(data);
     })        
 });
