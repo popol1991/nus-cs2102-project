@@ -1,176 +1,221 @@
-/* Images & Links */
+input {
+  -webkit-appearance: none;
+}
+.futura {
+  font-family: FuturaBT-Bold;
+}
+.minion {
+  font-family: "minion-pro-1", "minion-pro-2", "Minion Pro", "Palatino Linotype", "Book Antiqua", Palatino, serif;
+}
+/* Universal */
+body {
+  background: url("../image/noise.png") #222222;
+  font-family: "minion-pro-1", "minion-pro-2", "Minion Pro", "Palatino Linotype", "Book Antiqua", Palatino, serif;
+}
+@media screen and (max-device-width: 480px) {
+  body {
+    -webkit-text-size-adjust: none;
+  }
+}
+/* Avoid text resizing on Mobile Safari */
+input {
+  -webkit-appearance: none;
+}
+img {
+  display: block;
+}
+a {
+  text-decoration: none;
+}
+h1, h2, b {
+  font-weight: normal;
+}
+ul, ol, li {
+  list-style: none;
+}
+.section-title {
+  color: #2d3032;
+  font-size: 56px;
+  font-family: FuturaBT-Bold;
+  letter-spacing: 0.1em;
+  padding: 63px 20px 0;
+  text-transform: uppercase;
+}
+.special {
+  color: #00c0ff;
+}
+/* Helpers */
+.container {
+  margin: 0 auto;
+  overflow: hidden;
+  width: 960px;
+}
+.center-unknown-width {
+  display: block;
+  float: left;
+  left: 50%;
+  position: relative;
+}
+.center-unknown-width .center-unknown-width {
+  left: -50%;
+}
+/* Sections */
+nav {
+  background: url("../image/nav-bar.png") repeat-x;
+  line-height: 24px;
+  font-size: 12px;
+  letter-spacing: 0.15em;
+  padding: 8px 0;
+  position: fixed;
+  text-transform: uppercase;
+  width: 100%;
+  z-index: 10;
+}
+nav ul {
+  overflow: hidden;
+  padding: 0 223px;
+  position: relative;
+}
+nav ul:after, nav ul:before {
+  background: url("../image/arrows.png") no-repeat;
+  bottom: 0;
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 220px;
+}
+nav ul:before {
+  background-position: left top;
+  left: 0;
+}
+nav ul:after {
+  background-position: right top;
+  right: 0;
+}
+nav li {
+  float: left;
+}
+nav a {
+  color: #fbfbfb;
+  float: left;
+  padding: 0 15px;
+  -moz-transition-property: all;
+  -moz-transition-duration: 0.3s;
+  -o-transition-property: all;
+  -o-transition-duration: 0.3s;
+  -webkit-transition-property: all;
+  -webkit-transition-duration: 0.3s;
+  transition-property: all;
+  transition-duration: 0.3s;
+}
+nav a:hover, nav a:focus {
+  -moz-border-radius: 4px;
+  -o-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
+  color: #0bc2fe;
+  outline: none;
+}
+nav .active {
+  background-color: #222222;
+  -moz-border-radius: 4px;
+  -o-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
+  color: #0bc2fe;
+}
 
-:focus { outline:0; }
-a img { border: none; }
-a { color: #231f20; text-decoration: none; }
-a:hover { text-decoration: none; }
-*::selection { color: #f1f1f1; background: #bababa; }
-::-moz-selection { color: #f1f1f1; background: #bababa; }
+.our-projects {
+  background: url("../image/noise.png") #fbfbfb;
+  background: url("../image/noise.png"), url("../image/gray-bar.png") repeat-x left bottom #fbfbfb;
+  overflow: hidden;
+  padding-bottom: 90px;
+}
+.our-projects section {
+  float: left;
+  margin-left: 10px;
+  overflow: hidden;
+  padding-top: 35px;
+  width: 310px;
+}
+.our-projects section.double-wide {
+  width: 630px;
+}
+.our-projects ul {
+  float: left;
+  width: 310px;
+}
+.our-projects hgroup h1 {
+  color: #768a92;
+  font-size: 30px;
+  font-weight: normal;
+  font-family: FuturaBT-Bold;
+  letter-spacing: 3px;
+  margin-left: 10px;
+  text-transform: uppercase;
+}
+.our-projects hgroup h2 {
+  color: #222222;
+  font-size: 16px;
+  font-style: italic;
+  font-weight: normal;
+  margin: 0 0 20px 10px;
+}
+.our-projects a, .our-projects .project {
+  background-position: 278px 9px;
+  color: #222222;
+  display: block;
+  -moz-border-radius: 4px;
+  -o-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
+  margin-bottom: 4px;
+  padding: 4px 15px 5px 10px;
+  -moz-transition-property: all;
+  -moz-transition-duration: 0.3s;
+  -o-transition-property: all;
+  -o-transition-duration: 0.3s;
+  -webkit-transition-property: all;
+  -webkit-transition-duration: 0.3s;
+  transition-property: all;
+  transition-duration: 0.3s;
+  overflow:auto; 
+	}
+.our-projects a h2, .our-projects .project h2 {
+  font-size: 14px;
+  font-family: FuturaBT-Bold;
+  letter-spacing: 0.1em;
+  line-height: 22px;
+  text-transform: uppercase;
+}
+.our-projects a p, .our-projects .project p {
+  font-size: 14px;
+  line-height: 18px;
+}
 
-/* Text */
+.our-projects a img, .our-projects .project img {
+	float: left;
+	margin-right: 10px;
+}
+.our-projects a:hover {
+  background: url("../image/arrow-small-white.png") 288px 9px no-repeat #00c0ff;
+}
 
-h1, h2, h3, h4, h5, h6, p { margin: 0; }
+footer {
+  background: url("../image/dark-gray-bar.png") #212121;
+  color: #888888;
+  font-size: 10px;
+  font-family: FuturaBT-Bold;
+  letter-spacing: 0.1em;
+  line-height: 12px;
+  padding: 7px 0 8px;
+  text-align: right;
+  text-transform: uppercase;
+}
+footer p {
+  padding: 0 20px;
+}
 
-h1, h2, h3 { font-family: brandon-grotesque-1, brandon-grotesque-2, sans-serif; font-weight: 700; font-style: normal; letter-spacing: 0.01em; text-transform: uppercase; }
-
-h1 { font-size: 22px; letter-spacing: 0.06em; padding-bottom: 5px; }
-h2 { font-size: 20px; }
-h3 { font-size: 17px; }
-h4 { font-family: "ff-tisa-web-pro-1","ff-tisa-web-pro-2", Georgia, serif; font-size: 15px; font-weight: normal; padding-top: 5px; }
-h5 { font-family: brandon-grotesque-1, brandon-grotesque-2, sans-serif; font-weight: 700; font-style: normal; font-size: 15px; }
-p { padding-bottom: 16px; line-height: 22px; }
-
-ul, ol { list-style-image: none; list-style-position: outside; list-style-type: none; }
-
-/* Classes */
-
-.current { background-color: #f7f7f7; color: #7ecfbc; }
-.aligncenter { margin-left: auto; margin-right: auto; padding: 0px; text-align: center; }
-.divider { background-attachment: scroll; background-color: transparent; background-image: url("http://www.studionudge.com/imgs/divider.png"); background-position: top center; background-repeat: no-repeat; margin-top: 20px; margin-bottom: 20px; }
-.blue { color: #7ecfbc; }
-.gray { color: #bababa; }
-.tag { padding: 4px 0 10px 25px; }
-.intro { font-size: 15px; padding-right: 25px; }
-.underline { border-bottom-color: #7ecfbc; border-bottom-style: solid; border-bottom-width: 2px; }
-.wrapper { position: relative; overflow-x: hidden; overflow-y: hidden; }
-.blurb { background-attachment: scroll; background-color: transparent; background-image: url("http://www.studionudge.com/imgs/blurb_bg.png"); background-position: top center; background-repeat: no-repeat; float: right; height: 136px; margin-top: 10px; padding: 6px 15px 0 30px; width: 290px; }
-.about { border-left-color: #7ecfbc; border-left-style: solid; border-left-width: 3px; padding-left: 20px; padding-top: 6px; }
-
-/* Layout */
-
-body { background: url("http://www.studionudge.com/imgs/bg.png"); background-repeat: repeat; color: #231f20; font-family: "ff-tisa-web-pro-1","ff-tisa-web-pro-2", Georgia, serif; font-size: 14px; letter-spacing: 0.02em; margin: 0; padding: 0; }
-
-#container { background-attachment: scroll; background-color: transparent; background-image: url("http://www.studionudge.com/imgs/dots_bg.png"); background-position: top center; background-repeat: repeat-x; position: fixed; height: 53px; overflow-x: hidden; overflow-y: hidden; width: 100%; z-index: 100; }
-
-#header { height: 40px; text-transform: uppercase; }
-	#header a { font-family: brandon-grotesque-1, brandon-grotesque-2, sans-serif; font-weight: 700; font-size: 16px; letter-spacing: 0.03em; padding: 6px 4px 3px 4px; -moz-transition: all 100ms linear; -webkit-transition: all 100ms linear; }
-	#header a:hover { color: #7ecfbc; }
-	#header ul { float: right; padding: 0px; margin: 14px 0 0 0; }
-	#header ul li { float: left; margin: 0 14px; }
-	
-#studionudge { background-clip: border-box; background-color: transparent; background-image: url("http://www.studionudge.com/imgs/logo.png"); background-origin: padding-box; background-position: 0 0; background-repeat: no-repeat; background-size: auto auto; display: block; height: 75px; left: 0px; padding: 0px; position: absolute; top: 8px; width: 135px; z-index: 1000; }
-	#studionudge:hover { background-position: 0 -75px; }
-
-#content { padding-top: 125px; overflow-x: hidden; overflow-y: hidden; }
-
-#services { padding: 50px 0 35px 0; overflow-x: hidden; overflow-y: hidden; }
-
-#container-2 { background-attachment: scroll; background-color: transparent; background-image: url("http://www.studionudge.com/imgs/dots_bg.png"); background-position: top center; background-repeat: repeat; height: 662px; display: block; margin-top: 50px; width: 100%; }	
-
-#work { padding: 106px 0 52px 0; overflow-x: hidden; overflow-y: hidden; }
-	#work img { border-bottom-color: #7ecfbc; border-bottom-style: solid; border-bottom-width: 2px; }
-	#work a { display: block; -moz-transition: opacity 100ms linear; -webkit-transition: opacity 100ms linear; }
-	#work a:hover { opacity: 0.3; }
-.thumb_holder { background-attachment: scroll; background-color: #7ecfbc; background-clip: border-box; background-repeat: repeat; background-size: auto auto; height: 198px; width: 198px; margin-bottom: 54px; margin-left: 12px; position: relative; }
-
-#about { background-attachment: scroll; background-color: transparent; background-image: url("http://www.studionudge.com/imgs/clouds_bg.jpg"); background-position: bottom center; background-repeat: no-repeat;padding-top: 75px; overflow-x: hidden; overflow-y: hidden; }
-
-/* Homepage Slider */
-#slider_container { margin: 0 auto; padding: 0; position: relative; width: 944px; z-index: 0; }
-	
-#holder { height: 390px; position: relative; width: 944px; }
-
-#slides { height: 390px; margin: 0 auto; width: 944px; }
-	#slides .slides_container { height: 379px; display: none; margin: auto; overflow: hidden; position: relative; width: 944px; }
-	#slides .slides_container a { color: #f7f7f7; display: block; height: 379px; width: 944px; }
-	#slides .slides_container a span { display: block; height: 25px; position: absolute; top: 315; z-index: 1000; }
-	#slides .slides_container img { background-color: #f7f7f7; border: 2px solid #c9c8c8; display: block; padding: 0px; }
-	
-#project_slides { float: right; height: 350px; margin: 50px auto 0; width: 680px; }
-	#project_slides .project_slides_container { height: 350px; display: none; margin: auto; overflow: hidden; position: relative; width: 682px; }
-	#project_slides .project_slides_container a { color: #f7f7f7; display: block; height: 340px; width: 680px; }
-	#project_slides .project_slides_container a span { display: block; height: 25px; position: absolute; top: 315; z-index: 1000; }
-	#project_slides .project_slides_container img { background-color: #f7f7f7; display: block; padding: 0px; }
-
-#logo_slides { float: right; height: 355px; margin: 0 auto; width: 680px; }
-	#logo_slides .logo_slides_container { height: 342px; display: none; margin: auto; overflow: hidden; position: relative; width: 682px; }
-	#logo_slides .logo_slides_container a { color: #f7f7f7; display: block; height: 340px; width: 680px; }
-	#logo_slides .logo_slides_container a span { display: block; height: 25px; position: absolute; top: 315; z-index: 1000; }
-	#logo_slides .logo_slides_container img { background-color: #f7f7f7; display: block; padding: 0px; }
-	
-#ribbon { left: -10px; position: absolute; top: 318px; z-index: 500; }
-
-#banner { color: #f7f7f7; font-size: 15px; left: 10px; position: absolute; top: 320px; z-index: 1000; }
-	
-.pagination { margin: 15px auto 0px; overflow: hidden; padding: 0px; width: 130px; }
-.pagination li { float: left; list-style: none; margin: 0 3px; padding: 0px; }
-	.pagination li a { display: block; width: 12px; height: 0; padding-top: 12px; background-image: url("http://www.studionudge.com/imgs/pagination.png"); background-position: 0 0; float: left; overflow: hidden; }
-	.pagination li.current a { background-position: 0 -12px; }
-
-.pagination-logo { margin: 15px auto 0px; overflow: hidden; padding: 0px; width: 200px; }
-.pagination-logo li { float: left; list-style: none; margin: 0 3px; }
-	.pagination-logo li a { display: block; width: 12px; height: 0; padding-top: 12px; background-image: url("http://www.studionudge.com/imgs/pagination.png"); background-position: 0 0; float: left; overflow: hidden; }
-	.pagination-logo li.current a { background-position: 0 -12px; }
-
-/* Logo Page */
-
-#logos { background: #fff; -moz-box-shadow: 0 0 8px #d7d7d7; margin: 32px auto; overflow: hidden; width: 940px; -webkit-box-shadow: 0 0 8px #d7d7d7; }
-	.border-bottom { border-bottom: 2px solid #d7d7d7; border-top: none; border-left: none; border-right: none; overflow: hidden; margin: 0 auto; width: 900px; }
-	.border-right { border-right: 2px solid #d7d7d7; }
-	.border-left { border-left: 2px solid #d7d7d7; }
-
-/* Footer */
-#footer { background-color: #000; height: 1px; padding-top: 50px; width: 100%; }
-	#footer p { font-size: 14px; color: #ABABAB; }
-	#footer h3 { color: #fff; padding-bottom: 8px; letter-spacing: 0.06em; }
-	#footer a { color: #7ecfbc; }
-	#footer a:hover { text-decoration: underline; }
-	#footer span { margin-bottom: 10px; }
-
-#footer .col { width: 200px; padding-left: 40px; float: left; display: inline; position: relative; }
-.feed { background: url("http://www.studionudge.com/imgs/bird.png"); background-position: 0px 35px; background-repeat: no-repeat; }
-.light { font-family: "ff-tisa-web-pro-1","ff-tisa-web-pro-2", Georgia, serif; color: #ABABAB; }
-.sm { font-family: brandon-grotesque-1, brandon-grotesque-2, sans-serif; font-weight: 700; font-style: normal; font-size: 17px; text-transform: uppercase; }
-
-#twitter_update_list { font-size: 13px; line-height: 18px; list-style: none; margin-top: 0px; padding-left: 0px; } 
-	#twitter_update_list span, #twitter_update_list span a { color: #ABABAB; text-decoration: none; }
-	#twitter_update_list a { color: #ABABAB; }
-
-/* Portfolio Pages */
-#portfolio { padding-top: 125px; overflow: hidden; }
-	#portfolio h1 { line-height: 1.7; }
-
-#portfolio .page-info { border-bottom: 2px solid #D7D7D7; overflow: hidden; }
-
-#project-info { float: left; }
-	#portfolio #project-info a.visit-site { font-family: brandon-grotesque-1, brandon-grotesque-2, sans-serif; font-weight: 700; font-size: 16px; color: #231F20; text-transform: uppercase; letter-spacing: 0.06em; -moz-transition: all 100ms linear; -webkit-transition: all 100ms linear; }
-		#portfolio #project-info a.visit-site:hover { color: #7ecfbc; text-decoration: none; }
-	#project-info ul { border-bottom: 2px solid #D7D7D7; padding: 15px 0 18px 0px; margin-top: 0px; }
-	#project-info ul li { background: url("http://www.studionudge.com/imgs/li_dot.png") no-repeat left center; padding-left: 15px; }
-	#project-info p { border-bottom: 2px solid #D7D7D7; margin-bottom: 15px; }
-	
-#project-images { margin-top: 31px; margin-bottom: 50px; float: right; }
-	#project-images img { float: right; margin-top: 50px; margin-bottom: 10px; }
-
-.border { border-color: #fff; border-style: solid; border-width: 1px; -moz-box-shadow: 0 0 8px #d7d7d7; -webkit-box-shadow: 0 0 8px #d7d7d7; }
-.caption { margin-left: 20px; }
-
-ul.arrows { float: right; height: 27px; margin-top: 0px; overflow-x: hidden; overflow-y: hidden; padding: 0px; width: 52px; }
-	.arrows li { float: right; padding-left: 15px; }
-	.arrows li a { cursor: pointer; display: block; float: left; height: 27px; width: 26px; z-index: 99; }
-
-li.previous a { background-attachment: scroll; background-image: url("http://www.studionudge.com/imgs/arrows.png"); background-position: 0px 0px; background-repeat: no-repeat; text-indent: -9999px; }
-	li.previous a:hover { background-position: 0 -27px; }
-li.next a { background-attachment: scroll; background-image: url("http://www.studionudge.com/imgs/arrows.png"); background-position: -26px 0; background-repeat: no-repeat; text-indent: 9999px; }
-	li.next a:hover { background-position: -26px -27px; }
-	
-/* Test.html */
-
-#test { padding: 106px 0 52px 0; overflow-x: hidden; overflow-y: hidden; }
-	#test .holder { background-color: #7ecfbc; background-size: auto auto; height: 198px; width: 198px; margin-bottom: 54px; margin-left: 12px; position: relative; }	
-		#test .holder img { position: absolute; top: 0; border-bottom: #7ecfbc solid 2px; }
-		#test .holder a { display: block; height: 198px; width: 198px; -moz-transition: opacity 200ms linear; -webkit-transition: opacity 200ms linear; z-index: 100; }
-		#test .holder a:hover { opacity: 0; }
-
-.tascosa { background: url("http://www.studionudge.com/imgs/tascosa_bg.png") no-repeat center center; }
-.ana { background: url("http://www.studionudge.com/imgs/ana_bg.png") no-repeat center center; }
-.jc { background: url("http://www.studionudge.com/imgs/jc_bg.png") no-repeat center center; }
-.backstreet { background: url("http://www.studionudge.com/imgs/backstreet_bg.png") no-repeat center center; }
-.fm { background: url("http://www.studionudge.com/imgs/fm_bg.png") no-repeat center center; }
-.logos { background: url("http://www.studionudge.com/imgs/logos_bg.png") no-repeat center center; }
-.parisi { background: url("http://www.studionudge.com/imgs/parisi_bg.png") no-repeat center center; }
-.ngd { background: url("http://www.studionudge.com/imgs/ngd_bg.png") no-repeat center center; }
-.soap-chef { background: url("http://www.studionudge.com/imgs/soap-chef.png") no-repeat center center; }
 
 div.whitewrapper {
 	background: #fff;
@@ -183,7 +228,6 @@ div.whitewrapper {
 .whitewrapper .hd {
 	border-top: 6px solid #D12026;
 }
-
 
 button {
 	color: white;
