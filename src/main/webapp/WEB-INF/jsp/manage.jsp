@@ -61,22 +61,23 @@
 <section class="working-with-us" id="working-with-us">
 	<div class="container">
 		<h1 class="section-title">Manage My Restaurants<span class="special">.</span></h1>
+		<a href="new"><button class="bigbutton">Add New</button></a>
 		<ul>
 			<c:forEach var="rest" items="${restList}" varStatus="status">
 	            <li id="${rest.id}">
 	            	<div class="arrow"></div>
 	            	<div class="fact">
-	            		<h2 class="edit" id="name">${rest.name}</h2>
+	            		<h2 class="edit" id="name ${rest.id}">${rest.name}</h2>
 	            		<p>
 	            			<table width="300">
 	            				<tr>
 	            					<td width="130">Address:</td>
-	            					<td class="edit" id="address">${rest.address}</td>
+	            					<td class="edit" id="address ${rest.id}">${rest.address}</td>
 	            					<td><button id="small" onclick="remove(${rest.id})">delete</button></td>
 	            				</tr>
 	            				<tr>
 	            					<td>Category:</td>
-	            					<td class="edit" id="category">${rest.category}</td>
+	            					<td class="edit" id="category ${rest.id}">${rest.category}</td>
 	            					<td>
 	            						<c:if test="${rest.isApproved == 0}" >
 	            							<sec:authorize access="hasRole('admin')">
@@ -87,11 +88,11 @@
 	            				</tr>
 	            				<tr>
 	            					<td>Average Price:</td>
-	            					<td class="edit" id="avgPrice">${rest.avgPrice}</td>
+	            					<td class="edit" id="avgPrice ${rest.id}">${rest.avgPrice}</td>
 	            				</tr>
 	            				<tr>
 	            					<td>Area:</td>
-	            					<td class="edit" id="area">${rest.area}</td>
+	            					<td class="edit" id="area ${rest.id}">${rest.area}</td>
 	            				</tr>
 	            			</table>
 	            		</p>

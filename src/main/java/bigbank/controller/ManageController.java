@@ -54,6 +54,31 @@ public class ManageController {
 	@RequestMapping(value = "/modify", method = RequestMethod.POST)
 	public @ResponseBody String newRestModel(@RequestParam("value") String value,
 			@RequestParam("id") String field) {
+		String[] args = field.split(" ");
+		String attr = args[0];
+		int id = Integer.parseInt(args[1]);
+		Restaurant rest = new Restaurant();
+		rest.setId(id);
+		switch (attr) {
+			case "name":
+				rest.setName(value);
+				break;
+			case "address":
+				rest.setAddress(value);
+				break;
+			case "category":
+				rest.setCategory(value);
+				break;
+			case "avgPrice":
+				rest.setAvgPrice(Integer.parseInt(value));
+				break;
+			case "area":
+				rest.setArea(value);
+				break;
+			default:
+				break;					
+		}
+		restService.updateRestaurant(rest);
 		return value;
 	}
 

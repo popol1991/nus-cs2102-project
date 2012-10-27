@@ -207,9 +207,38 @@ nav .active {
   background: url("../image/noise.png"), url("../image/light-blue-bar.png") repeat-x left bottom #9eb8c3;
   padding: 0 0 55px;
 }
+.working-with-us .bigbutton {
+   background: #324754;
+   background: -webkit-gradient(linear, left top, left bottom, from(#4ab5f7), to(#324754));
+   background: -webkit-linear-gradient(top, #4ab5f7, #324754);
+   background: -moz-linear-gradient(top, #4ab5f7, #324754);
+   background: -ms-linear-gradient(top, #4ab5f7, #324754);
+   background: -o-linear-gradient(top, #4ab5f7, #324754);
+   margin-left: 20px;
+   margin-top: 20px;
+   padding: 12px 50px;
+   -webkit-border-radius: 26px;
+   -moz-border-radius: 26px;
+   border-radius: 26px;
+   text-shadow: rgba(0,0,0,.4) 0 1px 0;
+   color: #ffffff;
+   font-size: 17px;
+   font-family: Georgia, serif;
+   text-decoration: none;
+   vertical-align: middle;
+}
+.working-with-us .bigbutton:hover {
+   border-top-color: #2676ab;
+   background: #2676ab;
+   color: #ffffff;
+}
+.working-with-us .bigbutton:active {
+   border-top-color: #67879c;
+   background: #67879c;
+   }
 .working-with-us ul {
   overflow: hidden;
-  padding-top: 57px;
+  padding-top: 20px;
 }
 .working-with-us li {
   background: url("../image/arrow-right.png") -147px top no-repeat;
