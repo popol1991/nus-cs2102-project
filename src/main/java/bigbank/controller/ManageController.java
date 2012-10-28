@@ -68,6 +68,10 @@ public class ManageController {
 	@RequestMapping(value = "/delete/{restId}")
 	public @ResponseBody
 	boolean deleteRestaurantById(@PathVariable int restId) {
+		File photo = new File(IMAGE_PATH + restId + ".jpeg");
+		if (photo.exists()) {
+			photo.delete();
+		}
 		return restService.removeRestaurantById(restId);
 	}
 
