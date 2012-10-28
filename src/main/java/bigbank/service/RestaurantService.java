@@ -1,5 +1,6 @@
 package bigbank.service;
 
+import java.util.Calendar;
 import java.util.List;
 import java.util.Map;
 
@@ -57,6 +58,11 @@ public class RestaurantService {
 			old.setArea(rest.getArea());
 		}
 		return restDao.updateRestaurantById(rest.getId(), old);
+	}
+
+	public int createRestaurant(Restaurant newRest) {
+		newRest.setCreateTime(Calendar.getInstance().getTime());
+		return restDao.createRestaurant(newRest);
 	}
 	
 }

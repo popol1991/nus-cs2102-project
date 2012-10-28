@@ -1,12 +1,18 @@
 package bigbank.controller;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -32,18 +38,25 @@ public class ManageController {
 	@Autowired
 	UserService userService;
 	private static final String CACHE_PATH = "./src/main/webapp/misc/image/temp/";
-	private static final String CACHE_NAME = "temp";
+	private static final String IMAGE_PATH = "./src/main/webapp/misc/image/restaurant/";
+	private static final String CACHE_NAME = "temp.jpeg";
+	private String filePath;
 
 	@RequestMapping(method = RequestMethod.GET)
 	public String getRestaurantList(Model model) {
 
-		String email = ((org.springframework.security.core.userdetails.User) SecurityContextHolder
-				.getContext().getAuthentication().getPrincipal()).getUsername();
-		User user = userService.getUserByEmail(email);
+		User user = getCurrentUser();
 
 		model.addAttribute("restList",
 				restService.getRestaurantsByOwnerId(user.getId()));
 		return "manage";
+	}
+
+	private User getCurrentUser() {
+		String email = ((org.springframework.security.core.userdetails.User) SecurityContextHolder
+				.getContext().getAuthentication().getPrincipal()).getUsername();
+		User user = userService.getUserByEmail(email);
+		return user;
 	}
 
 	@RequestMapping(value = "/approve/{restId}")
@@ -95,13 +108,36 @@ public class ManageController {
 		model.addAttribute("newRestaurant", new Restaurant());
 		return "addnew";
 	}
+	
+	@RequestMapping(value = "/new", method = RequestMethod.POST) 
+	public String createNewRestaurant(@ModelAttribute Restaurant newRest, Model model) {
+		User user = getCurrentUser();
+		String authority = user.getAuthority();
+		if (authority.equals("admin")) {
+			newRest.setIsApproved(1);
+		} else {
+			newRest.setIsApproved(0);
+		}
+		int usreId = user.getId();
+		newRest.setOwner(usreId);
+		int restId = restService.createRestaurant(newRest);
+		if (restId != -1) {
+			saveTempImageWithId(restId);
+		}
+		return "manage";
+	}
+
+	private void saveTempImageWithId(int restId) {
+		File tempImage = new File(filePath);
+		File image = new File(IMAGE_PATH+restId+".jpeg");
+		tempImage.renameTo(image);
+	}
 
 	@RequestMapping(value = "/tempimage", method = RequestMethod.POST)
 	public void cacheImage(@RequestParam("file") MultipartFile file) {
 		try {
 			if (file.getSize() > 0) {
-				String filePath = CACHE_PATH + CACHE_NAME + "."
-						+ file.getOriginalFilename().split("\\.")[1];
+				filePath = CACHE_PATH + CACHE_NAME;
 				File fout = new File(filePath);
 				if (fout.exists()) {
 					fout.delete();

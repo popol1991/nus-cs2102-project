@@ -1,6 +1,6 @@
 package bigbank.bean;
 
-import java.sql.Date;
+import java.util.Date;
 
 public class Restaurant {
 	private int id;
@@ -73,8 +73,8 @@ public class Restaurant {
 		return createTime;
 	}
 
-	public void setCreateTime(Date createTime) {
-		this.createTime = createTime;
+	public void setCreateTime(Date date) {
+		this.createTime = date;
 	}
 
 	public int getOwner() {

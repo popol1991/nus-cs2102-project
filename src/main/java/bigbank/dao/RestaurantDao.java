@@ -101,5 +101,47 @@ public class RestaurantDao extends BasicDao {
 
 		return rows > 0;
 	}
+	
+	public int getIdByNameNAddress(String name, String address) {
+		StringBuilder sql = new StringBuilder();
+		Map<String, Object> parameters = new HashMap<String, Object>();
+		sql.append("select id from restaurant")
+			.append(" where name=:name and address=:address");
+		parameters.put("name", name);
+		parameters.put("address", address);
+
+		List<Restaurant> resultList = jdbcTemplate.query(sql.toString(),
+				parameters, new BeanPropertyRowMapper<Restaurant>(
+						Restaurant.class));
+
+		return resultList.get(0).getId();
+	}
+
+	public int createRestaurant(Restaurant rest) {
+		StringBuilder sql = new StringBuilder();
+		Map<String, Object> parameters = new HashMap<String, Object>();
+		sql.append("insert into restaurant values (")
+				.append(" :id, :name, :address, :category,")
+				.append(" :isApproved, :avgPrice, :area,")
+				.append(" :createTime, :owner)");
+
+		parameters.put("id", rest.getId());
+		parameters.put("name", rest.getName());
+		parameters.put("address", rest.getAddress());
+		parameters.put("category", rest.getCategory());
+		parameters.put("isApproved", rest.getIsApproved());
+		parameters.put("avgPrice", rest.getAvgPrice());
+		parameters.put("area", rest.getArea());
+		parameters.put("createTime", rest.getCreateTime());
+		parameters.put("owner", rest.getOwner());
+
+		int rows = jdbcTemplate.update(sql.toString(), parameters);
+
+		if (rows > 0) {
+			return getIdByNameNAddress(rest.getName(), rest.getAddress());
+		} else {
+			return -1;
+		}
+	}
 
 }

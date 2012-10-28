@@ -107,34 +107,33 @@
 				<ul>
 					<li class="required">
 						<div class="label">
-							<label for="contact-name">Name</label>
+							<label for="name">Name</label>
 						</div>
-						<input type="text" name="contact-name" id="contact-name" required="required" value="">
-						<input type="text" name="contact-name-bzz" id="contact-name-bzz" value="" class="bzz">
+						<input type="text" name="name" id="name" required="required" value="">
 					</li>
 					<li class="required">
 						<div class="label">
-							<label for="contact-email">Address</label>
+							<label for="address">Address</label>
 						</div>
-						<input type="email" name="contact-email" required="required" id="contact-email">
+						<input type="text" name="address" required="required" id="address">
 					</li>
 					<li class="required">
 						<div class="label">
-							<label for="contact-phone">Category</label>
+							<label for="category">Category</label>
 						</div>
-						<input type="tel" name="contact-phone" id="contact-phone" value="">
+						<input type="text" name="category" id="category" value="">
 					</li>
 					<li class="required">
 						<div class="label">
-							<label for="contact-company">Average Price</label>
+							<label for="avgPrice">Average Price</label>
 						</div>
-						<input type="text" name="contact-company" id="contact-company" value="">
+						<input type="text" name="avgPrice" id="avgPrice" value="">
 					</li>
 					<li class="required">
 						<div class="label">
-							<label for="contact-company">Area</label>
+							<label for="area">Area</label>
 						</div>
-						<input type="text" name="contact-company" id="contact-company" value="">
+						<input type="text" name="area" id="area" value="">
 					</li>
 				</ul>
 				<input type="submit" id="contact-submit" name="contact-submit" value="Submit">					
