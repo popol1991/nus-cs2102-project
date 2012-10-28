@@ -64,5 +64,9 @@ public class RestaurantService {
 		newRest.setCreateTime(Calendar.getInstance().getTime());
 		return restDao.createRestaurant(newRest);
 	}
+
+	public Restaurant getRestaurantById(int restId) {
+		return restDao.getRestaurantById(restId);
+	}
 	
 }
