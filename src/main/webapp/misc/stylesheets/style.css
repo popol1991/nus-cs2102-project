@@ -297,6 +297,192 @@ nav .active {
   color: #2d3032;
 }
 
+.contact-us {
+  padding-bottom: 98px;
+}
+.column {
+  float: left;
+  padding: 0 20px;
+  width: 440px;
+}
+.contact-us .section-title {
+  color: #fbfbfb;
+  margin-bottom: 20px;
+}
+.disclaimer {
+  color: #ffffff;
+  font-size: 16px;
+  font-style: italic;
+  margin-bottom: 38px;
+  padding: 0 20px;
+  width: 440px;
+}
+.contact-form {
+  position: relative;
+}
+.contact-form label {
+  color: #9eb8c3;
+  font-size: 14px;
+  letter-spacing: 0.1em;
+  line-height: 24px;
+  font-family: "minion-pro-1", "minion-pro-2", "Minion Pro", "Palatino Linotype", "Book Antiqua", Palatino, serif;
+  padding: 6px 0 2px 10px;
+  text-transform: uppercase;
+}
+.contact-form .required label:after {
+  color: #00c0ff;
+  content: "*";
+}
+.contact-form input[type=text],
+.contact-form input[type=tel],
+.contact-form input[type=email],
+.contact-form textarea {
+  background-color: #2d3032;
+  border: 3px solid #2d3032;
+  -moz-border-radius: 4px;
+  -o-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
+  color: #fbfbfb;
+  display: block;
+  font-size: 18px;
+  font-family: "minion-pro-1", "minion-pro-2", "Minion Pro", "Palatino Linotype", "Book Antiqua", Palatino, serif;
+  margin-bottom: 20px;
+  padding: 5px 5px 5px 8px;
+  -moz-transition-property: all;
+  -moz-transition-duration: 0.3s;
+  -o-transition-property: all;
+  -o-transition-duration: 0.3s;
+  -webkit-transition-property: all;
+  -webkit-transition-duration: 0.3s;
+  transition-property: all;
+  transition-duration: 0.3s;
+  width: 421px;
+}
+.contact-form textarea {
+  font-size: 14px;
+  height: 235px;
+  line-height: 20px;
+}
+.contact-form input[type=text]:focus,
+.contact-form input[type=tel]:focus,
+.contact-form input[type=email]:focus,
+.contact-form textarea:focus {
+  background-color: #fbfbfb;
+  border: 3px solid #fbfbfb;
+  color: #222222;
+  outline: none;
+}
+.contact-form .has-error input, .contact-form .has-error input:focus {
+  border-color: #00c0ff;
+}
+.contact-form .error {
+  color: #00c0ff;
+  font-size: 14px;
+  font-style: italic;
+}
+.contact-form input[type=submit] {
+  background-color: #9eb8c3;
+  border: 0;
+  -moz-border-radius: 4px;
+  -o-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
+  color: #fbfbfb;
+  font-size: 18px;
+  font-family: FuturaBT-Bold;
+  letter-spacing: 0.1em;
+  padding: 6px 0;
+  text-transform: uppercase;
+  -moz-transition-property: all;
+  -moz-transition-duration: 0.3s;
+  -o-transition-property: all;
+  -o-transition-duration: 0.3s;
+  -webkit-transition-property: all;
+  -webkit-transition-duration: 0.3s;
+  transition-property: all;
+  transition-duration: 0.3s;
+  width: 440px;
+}
+.contact-form input[type=submit]:hover, .contact-form input[type=submit]:focus {
+  background-color: #00c0ff;
+  cursor: pointer;
+  outline: none;
+}
+.contact-form input[type=text].bzz {
+  display: none;
+}
+
+.thank-you {
+  background: rgba(34, 34, 34, 0.9);
+  bottom: 0;
+  display: none;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+.thank-you.active {
+  display: block;
+}
+.thank-you div {
+  bottom: 55px;
+  left: 0;
+  position: absolute;
+  right: 0;
+}
+.thank-you h2 {
+  font-family: FuturaBT-Bold;
+  color: #00c0ff;
+  font-size: 20px;
+  letter-spacing: 0.1em;
+  line-height: 20px;
+  margin-bottom: 16px;
+  text-transform: uppercase;
+}
+.thank-you p {
+  color: #fbfbfb;
+  font-size: 18px;
+  font-style: italic;
+}
+.us {
+  border-bottom: 10px solid #2d3032;
+  padding: 21px 0 10px;
+  text-transform: uppercase;
+  overflow: auto;
+}
+.us h2 {
+  color: #2d3032;
+  font-family: FuturaBT-Bold;
+  font-size: 30px;
+  letter-spacing: 0.1em;
+  margin-bottom: 12px;
+}
+.us ul {
+  margin-bottom: 16px;
+}
+.us a {
+  color: #2d3032;
+  font-size: 20px;
+  font-family: FuturaBT-Bold;
+  letter-spacing: 0.1em;
+  line-height: 24px;
+}
+.us a .name {
+  color: #9eb8c3;
+  -moz-transition-property: all;
+  -moz-transition-duration: 0.3s;
+  -o-transition-property: all;
+  -o-transition-duration: 0.3s;
+  -webkit-transition-property: all;
+  -webkit-transition-duration: 0.3s;
+  transition-property: all;
+  transition-duration: 0.3s;
+}
+.us a:hover .name {
+  color: #00c0ff;
+}
+
 footer {
   background: url("../image/dark-gray-bar.png") #212121;
   color: #888888;

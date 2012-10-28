@@ -41,19 +41,19 @@ public class RestaurantService {
 
 	public boolean updateRestaurant(Restaurant rest) {
 		Restaurant old = restDao.getRestaurantById(rest.getId());
-		if (!old.getName().equals(rest.getName())) {
+		if (rest.getName()!=null && !old.getName().equals(rest.getName())) {
 			old.setName(rest.getName());
 		}
-		if (!old.getAddress().equals(rest.getAddress())) {
+		if (rest.getAddress()!=null && !old.getAddress().equals(rest.getAddress())) {
 			old.setAddress(rest.getAddress());
 		}
-		if (!old.getCategory().equals(rest.getCategory())) {
+		if (rest.getCategory()!=null && !old.getCategory().equals(rest.getCategory())) {
 			old.setCategory(rest.getCategory());
 		}
-		if (old.getAvgPrice() != rest.getAvgPrice()) {
+		if (rest.getAvgPrice()!=0 && old.getAvgPrice() != rest.getAvgPrice()) {
 			old.setAvgPrice(rest.getAvgPrice());
 		}
-		if (old.getArea() != rest.getArea()) {
+		if (rest.getArea()!=null && old.getArea() != rest.getArea()) {
 			old.setArea(rest.getArea());
 		}
 		return restDao.updateRestaurantById(rest.getId(), old);

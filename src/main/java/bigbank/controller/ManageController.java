@@ -81,5 +81,11 @@ public class ManageController {
 		restService.updateRestaurant(rest);
 		return value;
 	}
+	
+	@RequestMapping(value = "/new", method = RequestMethod.GET)
+	public String getNewRestaurantForm(Model model) {
+		model.addAttribute("newRestaurant", new Restaurant());
+		return "addnew";
+	}
 
 }

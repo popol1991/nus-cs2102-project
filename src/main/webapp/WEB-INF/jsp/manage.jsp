@@ -61,7 +61,7 @@
 <section class="working-with-us" id="working-with-us">
 	<div class="container">
 		<h1 class="section-title">Manage My Restaurants<span class="special">.</span></h1>
-		<a href="new"><button class="bigbutton">Add New</button></a>
+		<a href="/tutorial/service/manage/new"><button class="bigbutton">Add New</button></a>
 		<ul>
 			<c:forEach var="rest" items="${restList}" varStatus="status">
 	            <li id="${rest.id}">
