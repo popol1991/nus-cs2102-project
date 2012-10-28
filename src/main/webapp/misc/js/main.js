@@ -1,45 +1,56 @@
-    $(document).ready(function() {
-      $('.search').submit(function() {
-        $.getJSON('./service/search?'+$(this).serialize(), function(data) {
-          $('#searchHeader').text("Search Results");
-          $('#searchResults').html('');
-          $.each(data, function(index, obj) {
-          var div,content;
-          div = $('<div />' , {
-            class: 'whitewrapper'
-          });
-
-          $('<div />', {
-            class: 'hd'
-          }).appendTo(div);
-
-          $.each(obj, function(key, val) {
-            content = content + key + ":" + val + "\n";
-          });
-
-          $('<p />').text(content).appendTo(div);
-          div.appendTo($('#searchResults'));
-          });
-        })
-        return false;
-      });
-      $.getJSON('./service/main/hotshops', function(data) {
-        $.each(data, function(index, obj) {
-          var div,content;
-          div = $('<div />' , {
-            class: 'whitewrapper'
-          });
-
-          $('<div />', {
-            class: 'hd'
-          }).appendTo(div);
-
-          $.each(obj, function(key, val) {
-            content = content + key + ":" + val + "\n";
-          });
-
-          $('<p />').text(content).appendTo(div);
-          div.appendTo($('#searchResults'));
-        });
-      })        
+$(document).ready(function() {
+    $('.search').submit(function() {
+      $.getJSON('./service/search?'+$(this).serialize(), function(data) {
+        $('#searchHeader').text("Search Results");
+        $('#searchResults').html('');
+        addRestaurantListToPage(data);
+      })
+      return false;
     });
+    $.getJSON('/tutorial/service/main/hotshops', function(data) {
+        addRestaurantListToPage(data);
+    })        
+});
+
+function addRestaurantListToPage(data) {
+    var count = 0;
+    $.each(data, function(index, obj) {
+        var li = $('<li />');
+        var a = $('<a />').appendTo(li);
+
+        var img,h2,p;
+        img = $('<img />');
+        h2 = $('<h2 />');
+        p = $('<p />');
+        $.each(obj, function(key, val) {
+            switch (key) {
+                case "id":
+                    a.attr("href","/tutorial/service/restaurant/"+val);
+                    img.attr("src","/tutorial/misc/image/restaurant/"+val+".jpeg");
+                    img.attr("height",60);
+                    break;
+                case "name":
+                    h2.text(val);
+                    break;
+                case "address":
+                    p.html("Address: "+val);
+                    break;
+                case "category":
+                    p.html(p.html()+"<br/>Category: "+val);
+                    break;
+                default:
+                    break;
+            }
+        });
+
+        img.appendTo(a);
+        h2.appendTo(a);
+        p.appendTo(a);
+        if (count<5) {
+            li.appendTo($('#restaurant_list_1'));
+        } else if (count<10) {
+            li.appendTo($('#restaurant_list_2'));
+        }
+        count++;
+    });
+}

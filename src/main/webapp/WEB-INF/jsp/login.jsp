@@ -27,7 +27,7 @@
 				margin: 0;
 				pading: 0;
 				color: #fff;
-				background: url('/hungry/misc/image/bg-login.png') repeat #1b1b1b;
+				background: url('/tutorial/misc/image/bg-login.png') repeat #1b1b1b;
 				font-size: 14px;
 				text-shadow: #050505 0 -1px 0;
 				font-weight: bold;
@@ -44,7 +44,7 @@
 				border-bottom: solid 3px #777973;
 				height: 250px;
 				width: 100%;
-				background: url('/hungry/misc/image/bg-login-top.png') repeat #fff;
+				background: url('/tutorial/misc/image/bg-login-top.png') repeat #fff;
 				z-index: 1;
 			}
 			

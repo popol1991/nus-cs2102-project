@@ -1,17 +1,17 @@
 package bigbank.bean;
 
-import java.sql.Date;
+import java.util.Date;
 
 public class Restaurant {
 	private int id;
 	private String name;
 	private String address;
 	private String category;
-	private boolean isApproved;
+	private int isApproved;
 	private int avgPrice;
 	private String area;
 	private Date createTime;
-	private int ownerId;
+	private int owner;
 
 	public int getId() {
 		return id;
@@ -45,11 +45,11 @@ public class Restaurant {
 		this.category = category;
 	}
 
-	public boolean isApproved() {
+	public int getIsApproved() {
 		return isApproved;
 	}
 
-	public void setApproved(boolean isApproved) {
+	public void setIsApproved(int isApproved) {
 		this.isApproved = isApproved;
 	}
 
@@ -73,15 +73,15 @@ public class Restaurant {
 		return createTime;
 	}
 
-	public void setCreateTime(Date createTime) {
-		this.createTime = createTime;
+	public void setCreateTime(Date date) {
+		this.createTime = date;
 	}
 
-	public int getOwnerId() {
-		return ownerId;
+	public int getOwner() {
+		return owner;
 	}
 
-	public void setOwnerId(int ownerId) {
-		this.ownerId = ownerId;
+	public void setOwner(int owner) {
+		this.owner = owner;
 	}
 }
