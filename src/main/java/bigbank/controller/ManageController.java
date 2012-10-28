@@ -128,6 +128,8 @@ public class ManageController {
 		if (restId != -1) {
 			saveTempImageWithId(restId);
 		}
+		model.addAttribute("restList",
+				restService.getRestaurantsByOwnerId(user.getId()));
 		return "manage";
 	}
 
