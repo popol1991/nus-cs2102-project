@@ -455,6 +455,7 @@ nav .active {
   color: #2d3032;
   font-family: FuturaBT-Bold;
   font-size: 30px;
+  text-align: center;
   letter-spacing: 0.1em;
   margin-bottom: 12px;
 }

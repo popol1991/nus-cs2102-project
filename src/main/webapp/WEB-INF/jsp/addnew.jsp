@@ -23,6 +23,8 @@
 		  -o-border-radius: 4px;
 		  -webkit-border-radius: 4px;
 		  border-radius: 4px;
+		  margin-bottom: 10px;
+		  margin-left: 145px;
 		  color: #fbfbfb;
 		  font-size: 18px;
 		  font-family: FuturaBT-Bold;
@@ -65,13 +67,32 @@
 		  direction: ltr;
 		  cursor: pointer;
 		}
+		#preview {
+			max-width: 400px;
+			max-height: 350px;
+		}
 	</style>
 
     <script type="text/javascript" src="<c:url value='/misc/js/jquery-1.8.1.min.js'/>"></script>
+    <script type="text/javascript" src="<c:url value='/misc/js/jquery.ui.widget.js'/>"></script>
+    <script type="text/javascript" src="<c:url value='/misc/js/jquery.iframe-transport.js'/>"></script>
+    <script type="text/javascript" src="<c:url value='/misc/js/jquery.fileupload.js'/>"></script>
     <script type="text/javascript">
-    	function uploadImage () {
-    		alert("boom!");
-    	}
+    	$(function() {
+    		$('.upload').fileupload({
+    			dataType: 'image',
+    			change: function (e,data) {
+    				if (data.files && data.files[0]) {
+    					var reader = new FileReader();
+    					reader.onload = function(elm) {
+    						$('#preview')
+    							.attr('src',elm.target.result);
+    					}
+    					reader.readAsDataURL(data.files[0]);
+    				}
+    			}
+    		});
+    	});
     </script>
 </head>
 
@@ -128,10 +149,13 @@
 			<div class="us">
 				<h2>Restaurant Photo</h2>
 				<!-- <span class="btn fileinput-button btn-success"> -->
-				<span class="button fileinput-button">
+				<table width="100%">
+				<tr><td><span class="button fileinput-button">
 					<span>Add Image</span>
 					<input class="upload" type="file" name="files[]" multiple="">
-				</span>
+				</span></td></tr>
+				<tr><td align="center"><img id="preview" src=""></td></tr>
+				</table>
 			</div>
 		</div>
 	</div>
