@@ -81,6 +81,7 @@
     	$(function() {
     		$('.upload').fileupload({
     			dataType: 'image',
+    			url: 'tempimage',
     			change: function (e,data) {
     				if (data.files && data.files[0]) {
     					var reader = new FileReader();
@@ -152,7 +153,7 @@
 				<table width="100%">
 				<tr><td><span class="button fileinput-button">
 					<span>Add Image</span>
-					<input class="upload" type="file" name="files[]" multiple="">
+					<input class="upload" type="file" name="file" multiple="">
 				</span></td></tr>
 				<tr><td align="center"><img id="preview" src=""></td></tr>
 				</table>

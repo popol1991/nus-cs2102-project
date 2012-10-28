@@ -1,5 +1,9 @@
 package bigbank.controller;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import bigbank.bean.Restaurant;
 import bigbank.bean.User;
@@ -26,6 +31,8 @@ public class ManageController {
 	RestaurantService restService;
 	@Autowired
 	UserService userService;
+	private static final String CACHE_PATH = "./src/main/webapp/misc/image/temp/";
+	private static final String CACHE_NAME = "temp";
 
 	@RequestMapping(method = RequestMethod.GET)
 	public String getRestaurantList(Model model) {
@@ -52,7 +59,8 @@ public class ManageController {
 	}
 
 	@RequestMapping(value = "/modify", method = RequestMethod.POST)
-	public @ResponseBody String newRestModel(@RequestParam("value") String value,
+	public @ResponseBody
+	String newRestModel(@RequestParam("value") String value,
 			@RequestParam("id") String field) {
 		String[] args = field.split(" ");
 		String attr = args[0];
@@ -60,32 +68,57 @@ public class ManageController {
 		Restaurant rest = new Restaurant();
 		rest.setId(id);
 		switch (attr) {
-			case "name":
-				rest.setName(value);
-				break;
-			case "address":
-				rest.setAddress(value);
-				break;
-			case "category":
-				rest.setCategory(value);
-				break;
-			case "avgPrice":
-				rest.setAvgPrice(Integer.parseInt(value));
-				break;
-			case "area":
-				rest.setArea(value);
-				break;
-			default:
-				break;					
+		case "name":
+			rest.setName(value);
+			break;
+		case "address":
+			rest.setAddress(value);
+			break;
+		case "category":
+			rest.setCategory(value);
+			break;
+		case "avgPrice":
+			rest.setAvgPrice(Integer.parseInt(value));
+			break;
+		case "area":
+			rest.setArea(value);
+			break;
+		default:
+			break;
 		}
 		restService.updateRestaurant(rest);
 		return value;
 	}
-	
+
 	@RequestMapping(value = "/new", method = RequestMethod.GET)
 	public String getNewRestaurantForm(Model model) {
 		model.addAttribute("newRestaurant", new Restaurant());
 		return "addnew";
 	}
 
+	@RequestMapping(value = "/tempimage", method = RequestMethod.POST)
+	public void cacheImage(@RequestParam("file") MultipartFile file) {
+		try {
+			if (file.getSize() > 0) {
+				String filePath = CACHE_PATH + CACHE_NAME + "."
+						+ file.getOriginalFilename().split("\\.")[1];
+				File fout = new File(filePath);
+				if (fout.exists()) {
+					fout.delete();
+				}
+				fout.createNewFile();
+				InputStream inputStream = file.getInputStream();
+				OutputStream outputStream = new FileOutputStream(filePath);
+				int readBytes = 0;
+				byte[] buffer = new byte[1024];
+				while ((readBytes = inputStream.read(buffer, 0, 1024)) != -1) {
+					outputStream.write(buffer, 0, readBytes);
+				}
+				outputStream.close();
+				inputStream.close();
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 }
