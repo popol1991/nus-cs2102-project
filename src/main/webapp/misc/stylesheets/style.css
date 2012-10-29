@@ -235,7 +235,32 @@ nav .active {
 .working-with-us .bigbutton:active {
    border-top-color: #67879c;
    background: #67879c;
-   }
+}
+.fact button {
+  background-color: #9eb8c3;
+  border: 0;
+  -moz-border-radius: 4px;
+  -o-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
+  color: #fbfbfb;
+  font-size: 14px;
+  font-family: FuturaBT-Bold;
+  text-transform: uppercase;
+  -moz-transition-property: all;
+  -moz-transition-duration: 0.3s;
+  -o-transition-property: all;
+  -o-transition-duration: 0.3s;
+  -webkit-transition-property: all;
+  -webkit-transition-duration: 0.3s;
+  transition-property: all;
+  transition-duration: 0.3s;
+}
+.fact button:hover, .fact button:focus {
+  background-color: #00c0ff;
+  cursor: pointer;
+  outline: none;
+}
 .working-with-us ul {
   overflow: hidden;
   padding-top: 20px;
@@ -329,6 +354,11 @@ nav .active {
   padding: 6px 0 2px 10px;
   text-transform: uppercase;
 }
+.contact-form img {
+  margin-bottom: 10px;
+  max-width: 400px;
+  max-height: 350px;
+}
 .contact-form .required label:after {
   color: #00c0ff;
   content: "*";
@@ -361,7 +391,7 @@ nav .active {
 }
 .contact-form textarea {
   font-size: 14px;
-  height: 235px;
+  height: 150px;
   line-height: 20px;
 }
 .contact-form input[type=text]:focus,
@@ -411,6 +441,77 @@ nav .active {
 }
 .contact-form input[type=text].bzz {
   display: none;
+}
+
+.contact-elsewhere {
+  border-bottom: 10px solid #2d3032;
+  padding: 21px 0 10px;
+}
+.contact-elsewhere h2 {
+  color: #fbfbfb;
+  font-size: 24px;
+  font-family: FuturaBT-Bold;
+  letter-spacing: 0.1em;
+  margin-bottom: 14px;
+  -moz-transition-property: all;
+  -moz-transition-duration: 0.3s;
+  -o-transition-property: all;
+  -o-transition-duration: 0.3s;
+  -webkit-transition-property: all;
+  -webkit-transition-duration: 0.3s;
+  transition-property: all;
+  transition-duration: 0.3s;
+  text-transform: uppercase;
+}
+.contact-elsewhere a {
+  color: #9eb8c3;
+  display: block;
+  font-size: 14px;
+  margin-bottom: 18px;
+  border-bottom: 3px solid rgb(45,48,50);
+}
+.contact-elsewhere a span {
+  display: block;
+}
+.contact-elsewhere a .downsize {
+  font-size: 16px;
+  padding: 10px 0 10px;
+}
+.contact-elsewhere a .action {
+  color: #2d3032;
+  letter-spacing: 0.1em;
+  font-family: FuturaBT-Bold;
+  font-size: 20px;
+  text-transform: uppercase;
+  -moz-transition-property: all;
+  -moz-transition-duration: 0.3s;
+  -o-transition-property: all;
+  -o-transition-duration: 0.3s;
+  -webkit-transition-property: all;
+  -webkit-transition-duration: 0.3s;
+  transition-property: all;
+  transition-duration: 0.3s;
+}
+.contact-elsewhere a:hover {
+  color: #00c0ff;
+}
+.contact-elsewhere a:hover .action {
+  color: #9eb8c3;
+}
+.contact-elsewhere .page_navigation,
+.contact-elsewhere .alt_page_navigation {
+  padding-bottom: 10px;
+}
+.contact-elsewhere .page_navigation a,
+.contact-elsewhere .alt_page_navigation a{
+  padding:3px 5px;
+  margin:2px;
+  color:white;
+  text-decoration:none;
+  float: left;  
+  font-family: Tahoma;
+  font-size: 12px;
+  background-color:#2d3032;
 }
 
 .thank-you {
@@ -483,6 +584,7 @@ nav .active {
 .us a:hover .name {
   color: #00c0ff;
 }
+
 
 footer {
   background: url("../image/dark-gray-bar.png") #212121;

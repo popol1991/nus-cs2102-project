@@ -31,7 +31,7 @@
         <logout logout-success-url="/index.jsp" delete-cookies="JSESSIONID"/>
         <remember-me />
         
-        <session-management invalid-session-url="/timeout.jsp">
+        <session-management invalid-session-url="/index.jsp">
             <concurrency-control max-sessions="1" error-if-maximum-exceeded="true" />
         </session-management>
 

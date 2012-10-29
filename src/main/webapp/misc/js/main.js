@@ -25,7 +25,7 @@ function addRestaurantListToPage(data) {
         $.each(obj, function(key, val) {
             switch (key) {
                 case "id":
-                    a.attr("href","/tutorial/service/restaurant/"+val);
+                    a.attr("href","/tutorial/service/store/"+val);
                     img.attr("src","/tutorial/misc/image/restaurant/"+val+".jpeg");
                     img.attr("height",60);
                     break;
