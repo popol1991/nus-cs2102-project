@@ -29,7 +29,6 @@
             url:"manage/approve/"+restId,
             success: function(message) {
               if (message == true) {
-                alert("restaurant approved");
                 $('button.restId'+restId).remove();
               } else {
                 alert("approve failed!");
@@ -44,7 +43,6 @@
 	          url:"manage/delete/"+restId,
 	          success: function(message) {
 	            if (message == true) {
-	              alert("restaurant deleted");
 	              $('li#'+restId).remove();
 	            } else {
 	              alert("delete failed!");

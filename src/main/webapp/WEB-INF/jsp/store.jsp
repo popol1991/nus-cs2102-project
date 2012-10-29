@@ -17,6 +17,15 @@
 
 
     <script type="text/javascript" src="<c:url value='/misc/js/jquery-1.8.1.min.js'/>"></script>
+    <script type="text/javascript" src="<c:url value='/misc/js/jquery.pajinate.min.js'/>"></script>
+    <script type="text/javascript">
+    	$(document).ready(function() {
+    		$('#paging_container').pajinate({
+    			num_page_links_to_display : 5,
+    			items_per_page:6
+    		});
+    	});
+    </script>
 </head>
 
 <body>
@@ -54,10 +63,29 @@
 					</div>
 					<input type="text" name="area" id="area"  value="${rest.area}" readonly="readonly">
 				</li>
+				<li>
+					<div class="label">
+						<label for="area">Your Review</label>
+					</div>
+					<textarea name="review" id="review"></textarea>
+				</li>
 			</ul>
+			<input type="submit" id="contact-submit" name="contact-submit" value="Submit">	
 			</form>
 		</div>
 		<div class="column">
+			<div class="contact-elsewhere" id="paging_container">
+				<h2>Reviews</h2>
+				<ul class="content">
+					<li>
+						<a href="" class="email">
+							<span class="action">popol…</span>
+							<span class="downsize">The Japanese cuisine in Singapore is not as good as in Dalian!</span>
+						</a>
+					</li>
+				</ul>
+				<div class="page_navigation"></div>
+			</div>
 		</div>
 	</div>
 </section>
