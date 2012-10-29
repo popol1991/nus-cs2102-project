@@ -43,4 +43,19 @@ public class UserDao extends BasicDao {
 		int row = jdbcTemplate.update(sql.toString(), parameters);
 		return (row == 1);
 	}
+
+	public User getUserById(int userId) {
+		StringBuilder sql = new StringBuilder();
+		Map<String, Object> parameters = new HashMap<String, Object>();
+		sql.append("select * from user where id=:id");
+		parameters.put("id", userId);
+
+		List<User> resultList = jdbcTemplate.query(sql.toString(), parameters,
+				new BeanPropertyRowMapper<User>(User.class));
+		User user = null;
+		if (resultList != null && resultList.size() > 0) {
+			user = resultList.get(0);
+		}
+		return user;
+	}
 }

@@ -19,11 +19,69 @@
     <script type="text/javascript" src="<c:url value='/misc/js/jquery-1.8.1.min.js'/>"></script>
     <script type="text/javascript" src="<c:url value='/misc/js/jquery.pajinate.min.js'/>"></script>
     <script type="text/javascript">
-    	$(document).ready(function() {
+    	function paginate () {
     		$('#paging_container').pajinate({
-    			num_page_links_to_display : 5,
-    			items_per_page:6
+    				num_page_links_to_display : 5,
+    				items_per_page:6
+    			});
+    	};
+    	function submitReview (id) {
+    		$.post('review/'+id, $('#review-form').serialize(), function(data) {
+    				var li,a,s1,s2;
+    				li = $('<li />');
+    				a = $('<a />');
+    				s1 = $('<span />',{
+    					class: "action"
+    				});
+    				s2 = $('<span />', {
+    					class: "downsize"
+    				});
+    				$.each(data, function(key, val) {
+    					if (key=="name") {
+    						s1.text(val);
+    					} else {
+    						s2.text(val);
+    					}
+    				});
+    				a.append(s1).append(s2).appendTo(li);
+    				li.prependTo($('.content'));
+    				$('textarea#review').text("");
+				},"json");
+				paginate();
+    	};
+    	$(document).ready(function () {
+    		paginate();
+    		$('#review-form').submit(function() {
+    			return false;
     		});
+    		/*$('#review-form').submit(function() {
+    			$.post('review', $(this).serialize(), function(data) {
+    				var li,a,s1,s2;
+    				li = $('<li />');
+    				a = $('<a />');
+    				s1 = $('<span />',{
+    					class: "action"
+    				});
+    				s2 = $('<span />', {
+    					class: "downsize"
+    				});
+    				$.each(data, function(key, val) {
+    					if (key=="name") {
+    						s1.text(val);
+    					} else {
+    						s2.text(val);
+    					}
+    				});
+    				a.append(s1).append(s2).appendTo(li);
+    				li.prependTo($('.content'));
+    				$('textarea#review').text("");
+				},"json");
+				$('#paging_container').pajinate({
+    				num_page_links_to_display : 5,
+    				items_per_page:6
+    			});
+    			return false;
+    		});*/
     	});
     </script>
 </head>
@@ -63,26 +121,37 @@
 					</div>
 					<input type="text" name="area" id="area"  value="${rest.area}" readonly="readonly">
 				</li>
+			</ul>
+			</form>
+			<form id="review-form" class="contact-form" name="contact-form" method="post" action="review">
+			<ul>
 				<li>
 					<div class="label">
 						<label for="area">Your Review</label>
 					</div>
-					<textarea name="review" id="review"></textarea>
+					<sec:authorize access="isAnonymous()">
+						<textarea name="review" id="review"  readonly="readonly">You need to login first.</textarea>
+		            </sec:authorize>
+        		    <sec:authorize access="isAuthenticated()">
+						<textarea name="review" id="review"></textarea>
+						<input type="submit" id="contact-submit" name="contact-submit" value="Submit" onclick="submitReview(${rest.id})">	
+		            </sec:authorize>
 				</li>
 			</ul>
-			<input type="submit" id="contact-submit" name="contact-submit" value="Submit">	
 			</form>
 		</div>
 		<div class="column">
 			<div class="contact-elsewhere" id="paging_container">
 				<h2>Reviews</h2>
 				<ul class="content">
-					<li>
-						<a href="" class="email">
-							<span class="action">popol…</span>
-							<span class="downsize">The Japanese cuisine in Singapore is not as good as in Dalian!</span>
-						</a>
-					</li>
+					<c:forEach var="review" items="${reviews}" varStatus="status">
+						<li>
+							<a href="" class="email">
+								<span class="action">${review.userEmail}</span>
+								<span class="downsize">${review.comment}</span>
+							</a>
+						</li>
+					</c:forEach>
 				</ul>
 				<div class="page_navigation"></div>
 			</div>
