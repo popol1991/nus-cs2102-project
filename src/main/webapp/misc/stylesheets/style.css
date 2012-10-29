@@ -614,6 +614,15 @@ div.whitewrapper {
 	border-top: 6px solid #D12026;
 }
 
+.q-main-search {
+  background: none repeat scroll 0% 0% padding-box rgb(235,235,235);
+  border: 1px solid rgb(191,191,191);
+  height: 21px;
+  padding: 4px 10px 0px 30px;
+  border-radius: 2px;
+  position: relative;
+}
+
 /*button {
 	color: white;
 	font-weight: bold;

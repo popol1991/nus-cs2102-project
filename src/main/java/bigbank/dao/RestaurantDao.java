@@ -144,4 +144,20 @@ public class RestaurantDao extends BasicDao {
 		}
 	}
 
+	public List<Restaurant> getRestWithMostReviews(int topN) {
+		StringBuilder sql = new StringBuilder();
+		Map<String, Object> parameters = new HashMap<String, Object>();
+		sql.append("select * from restaurant r")
+			.append(" order by (select count(*) from evaluate e")
+			.append(" where e.restaurant_id = r.id)")
+			.append(" desc limit :topN");
+		parameters.put("topN", topN);
+
+		List<Restaurant> resultList = jdbcTemplate.query(sql.toString(),
+				parameters, new BeanPropertyRowMapper<Restaurant>(
+						Restaurant.class));
+
+		return resultList;
+	}
+
 }

@@ -18,8 +18,7 @@ public class RestaurantService {
 	RestaurantDao restDao;
 
 	public List<Restaurant> getTopRestaurants() {
-		//TODO return top N restaurants
-		return restDao.getAllRestaurants();
+		return restDao.getRestWithMostReviews(Constants.TOP_N);
 	}
 
 	public List<Restaurant> getRestaurantsByQuery(Map<String, String> query) {

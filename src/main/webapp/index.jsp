@@ -39,6 +39,12 @@
   <section>
     <hgroup>
         <h1>Search</h1>
+        <div class="whitewrapper">
+          <div class="hd"></div>
+          <form class="foodSearch">
+            <p class="q-main-search"><input class="textSearchAdv" autocomplete="off" placeholder="Search restaurants, hawker, bars &amp; pubs" id="term" name="term" value="" type="text"><i class="icons ico-search"></i></p>
+          </form>
+        </div>
     </hgroup>
   </section>
 </div>
