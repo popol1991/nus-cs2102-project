@@ -67,5 +67,9 @@ public class RestaurantService {
 	public Restaurant getRestaurantById(int restId) {
 		return restDao.getRestaurantById(restId);
 	}
+
+	public List<Restaurant> getAllRestaurants() {
+		return restDao.getAllRestaurants();
+	}
 	
 }

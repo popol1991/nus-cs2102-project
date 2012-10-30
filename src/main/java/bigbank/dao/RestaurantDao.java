@@ -148,6 +148,7 @@ public class RestaurantDao extends BasicDao {
 		StringBuilder sql = new StringBuilder();
 		Map<String, Object> parameters = new HashMap<String, Object>();
 		sql.append("select * from restaurant r")
+			.append(" where r.isApproved = 1")
 			.append(" order by (select count(*) from evaluate e")
 			.append(" where e.restaurant_id = r.id)")
 			.append(" desc limit :topN");

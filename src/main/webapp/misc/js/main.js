@@ -14,6 +14,8 @@ $(document).ready(function() {
 
 function addRestaurantListToPage(data) {
     var count = 0;
+    $('#restaurant_list_1').html("");
+    $('#restaurant_list_2').html("");
     $.each(data, function(index, obj) {
         var li = $('<li />');
         var a = $('<a />').appendTo(li);

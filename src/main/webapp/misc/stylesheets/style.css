@@ -613,14 +613,49 @@ div.whitewrapper {
 .whitewrapper .hd {
 	border-top: 6px solid #D12026;
 }
-
+div.search {
+  margin: 0px;
+  padding: 10px 15px 15px;
+}
+.foodSearch {
+    margin: 0px;
+    position: relative;
+    z-index: 6;
+}
+.dropdown-group {
+    color: rgb(96,96,96);
+    position:relative;
+}
 .q-main-search {
-  background: none repeat scroll 0% 0% padding-box rgb(235,235,235);
-  border: 1px solid rgb(191,191,191);
-  height: 21px;
-  padding: 4px 10px 0px 30px;
-  border-radius: 2px;
-  position: relative;
+    background: none repeat scroll 0% 0% padding-box rgb(235,235,235);
+    border: 1px solid rgb(191,191,191);
+    height: 21px;
+    padding: 4px 10px 0px 30px;
+    border-radius: 2px 2px 2px 2px;
+    position: relative;
+}
+.q-main-search .icons {
+    position:absolute;
+    left: 4px;
+    top: 4px;
+}
+.ico-search {
+    height: 18px;
+    width: 20px;
+}
+.icons {
+    background: url("../image/sprite.png") no-repeat scroll 0% 0% transparent;
+    display: block;
+    text-indent: -9999em;
+}
+.q-main-search input[type="text"] {
+    background: none repeat scroll 0px center padding-box transparent;
+    height: auto;
+    padding: 0px;
+    vertical-align: baseline;
+    width: 100%;
+    border: 0px none;
+    border-radius: 0;
 }
 
 /*button {
