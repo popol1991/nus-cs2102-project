@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.google.gson.Gson;
+
 import bigbank.bean.Restaurant;
 import bigbank.service.RestaurantService;
 
@@ -25,9 +27,10 @@ public class SearchController {
 	@RequestMapping(method = RequestMethod.POST)
 	public String search(HttpServletRequest request, Model model) {
 		Map<String, String> query = request.getParameterMap();
+		Gson gson = new Gson();
 		List<Restaurant> result = restService.getRestaurantsByQuery(query);
 		model.addAttribute("page_title", "Results");
-		model.addAttribute("results", result);
+		model.addAttribute("results", gson.toJson(result));
 		return "category";
 	}
 

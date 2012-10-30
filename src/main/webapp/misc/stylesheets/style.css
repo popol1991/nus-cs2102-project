@@ -196,6 +196,7 @@ nav .active {
 
 .our-projects li a img, .our-projects .project li img {
 	float: left;
+  width: 28%;
 	margin-right: 10px;
 }
 .our-projects li a:hover {
@@ -616,6 +617,7 @@ div.whitewrapper {
 .whitewrapper li {
   padding-left: 50px;
   padding-right: 50px;
+  cursor: pointer;
 }
 div.search {
   margin: 0px;

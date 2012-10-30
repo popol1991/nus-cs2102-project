@@ -29,11 +29,31 @@
             });
         };
         function category(category) {
-          $.getJSON('/tutorial/service/search/'+category, function(data) {
+          type = '${page_title}';
+          if (type == "Category List") {
+            $.getJSON('/tutorial/service/search/'+category, function(data) {
+              addRestaurantListToPage(data);
+              paginate();
+            })
+          } else {
+            var json = eval('${results}');
+            var data = filter(json,category);
             addRestaurantListToPage(data);
             paginate();
-          })    
+          };
         };
+        function filter (data,category) {
+          if (category == "all") {
+            return data;
+          };
+          var result = new Array();
+          for (var i=0;i<data.length;i++) {
+            if (data[i].category.toUpperCase() == category.toUpperCase()) {
+              result.push(data[i]);
+            }
+          }
+          return result;  
+        }
         function addRestaurantListToPage(data) {
           $('#restaurant_list').html("");
           $.each(data, function(index, obj) {
