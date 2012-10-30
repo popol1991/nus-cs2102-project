@@ -162,7 +162,7 @@ nav .active {
   font-weight: normal;
   margin: 0 0 20px 10px;
 }
-.our-projects a, .our-projects .project {
+.our-projects li a, .our-projects .project {
   background-position: 278px 9px;
   color: #222222;
   display: block;
@@ -182,23 +182,23 @@ nav .active {
   transition-duration: 0.3s;
   overflow:auto; 
 	}
-.our-projects a h2, .our-projects .project h2 {
+.our-projects li a h2, .our-projects .project li h2 {
   font-size: 14px;
   font-family: FuturaBT-Bold;
   letter-spacing: 0.1em;
   line-height: 22px;
   text-transform: uppercase;
 }
-.our-projects a p, .our-projects .project p {
+.our-projects li a p, .our-projects .project li p {
   font-size: 14px;
   line-height: 18px;
 }
 
-.our-projects a img, .our-projects .project img {
+.our-projects li a img, .our-projects .project li img {
 	float: left;
 	margin-right: 10px;
 }
-.our-projects a:hover {
+.our-projects li a:hover {
   background: url("../image/arrow-small-white.png") 288px 9px no-repeat #00c0ff;
 }
 
@@ -609,6 +609,7 @@ div.whitewrapper {
 	-moz-box-shadow: 0 0 10px #bbb;
 	box-shadow: 0 0 10px #BBB;
 	margin-bottom: 30px;
+  overflow: auto;
 }
 .whitewrapper .hd {
 	border-top: 6px solid #D12026;
@@ -619,12 +620,18 @@ div.search {
 }
 .foodSearch {
     margin: 0px;
+    height: 125px;
     position: relative;
     z-index: 6;
 }
 .dropdown-group {
     color: rgb(96,96,96);
     position:relative;
+}
+.cuisines {
+  float: left;
+  width: 49%;
+  z-index: 1;
 }
 .q-main-search {
     background: none repeat scroll 0% 0% padding-box rgb(235,235,235);
@@ -657,7 +664,45 @@ div.search {
     border: 0px none;
     border-radius: 0;
 }
-
+div.select {
+  margin: 5px 0 5px;
+}
+.low-price {
+  float: left;
+  width: 137px;
+}
+.high-price {
+  float: right;
+  width: 137px;
+}
+.foodSearch input[type=submit] {
+  background-color: #9eb8c3;
+  border: 0;
+  -moz-border-radius: 4px;
+  -o-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
+  color: #fbfbfb;
+  font-size: 18px;
+  font-family: FuturaBT-Bold;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  -moz-transition-property: all;
+  -moz-transition-duration: 0.3s;
+  -o-transition-property: all;
+  -o-transition-duration: 0.3s;
+  -webkit-transition-property: all;
+  -webkit-transition-duration: 0.3s;
+  transition-property: all;
+  transition-duration: 0.3s;
+  margin-top: 5px;
+  width: 100%;
+}
+.foodSearch input[type=submit]:hover, .contact-form input[type=submit]:focus {
+  background-color: #00c0ff;
+  cursor: pointer;
+  outline: none;
+}
 /*button {
 	color: white;
 	font-weight: bold;

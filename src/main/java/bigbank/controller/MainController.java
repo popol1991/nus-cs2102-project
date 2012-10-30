@@ -29,4 +29,8 @@ public class MainController {
 		return "about";
 	}
 
+	@RequestMapping(value = "/category", method = RequestMethod.GET)
+	public String getCategoryPage() {
+		return "category";
+	}
 }
