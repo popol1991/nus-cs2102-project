@@ -64,18 +64,20 @@
               </div>
               <div class="select" style="float:left;">
                   <select name="category" id="category">
+                    <option value="Category" selected="selected">Category</option>
                     <option value="Chinese" class="whoo">Chinese</option>
                     <option value="Western">Western</option>
-                    <option value="Korean" selected="selected">Korean</option>
+                    <option value="Korean">Korean</option>
                     <option value="Japenese">Japenese</option>
                     <option value="Indian">Indian</option>  
                   </select>
               </div>
               <div class="select" style="float:right">
                   <select name="area" id="area">
+                    <option value="Area" selected="selected">Area</option>
                     <option value="West Coast" class="whoo">West Coast</option>
                     <option value="HourberFront">HourberFront</option>
-                    <option value="Holland Village" selected="selected">Holland Village</option>
+                    <option value="Holland Village">Holland Village</option>
                     <option value="Clementi">Clementi</option>
                   </select>
               </div>

@@ -1,5 +1,6 @@
 package bigbank.controller;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -8,7 +9,9 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -25,8 +28,17 @@ public class SearchController {
 	RestaurantService restService;
 
 	@RequestMapping(method = RequestMethod.POST)
-	public String search(HttpServletRequest request, Model model) {
-		Map<String, String> query = request.getParameterMap();
+	public String search(@RequestBody MultiValueMap<String, String> params,
+			Model model) {
+		Map<String, String> query = new HashMap<String, String>();
+		for (String key : params.keySet()) {
+			if (params.get(key) == null) {
+				query.put(key, null);
+			} else {
+				query.put(key, params.get(key).toString().replace("[", "")
+						.replace("]", "").replace("'", "").trim());
+			}
+		}
 		Gson gson = new Gson();
 		List<Restaurant> result = restService.getRestaurantsByQuery(query);
 		model.addAttribute("page_title", "Results");
@@ -41,7 +53,7 @@ public class SearchController {
 		if (category.equals("all")) {
 			results = restService.getAllRestaurants();
 		} else {
-			results =  restService.getRestaurantsByCategory(category);
+			results = restService.getRestaurantsByCategory(category);
 		}
 		return results;
 	}
