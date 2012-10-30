@@ -47,8 +47,12 @@ public class ManageController {
 
 		User user = getCurrentUser();
 
-		model.addAttribute("restList",
+		if (user.getAuthority().equals("admin")) {
+			model.addAttribute("restList", restService.getAllRestaurants());
+		} else {
+			model.addAttribute("restList",
 				restService.getRestaurantsByOwnerId(user.getId()));
+		}
 		return "manage";
 	}
 

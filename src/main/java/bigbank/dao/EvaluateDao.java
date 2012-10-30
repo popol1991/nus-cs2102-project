@@ -9,7 +9,6 @@ import java.util.Map;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.stereotype.Repository;
 
-import bigbank.bean.Restaurant;
 import bigbank.bean.Review;
 
 @Repository

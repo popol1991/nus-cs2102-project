@@ -14,18 +14,39 @@ public class RestaurantDao extends BasicDao {
 
 	public List<Restaurant> getRestaurantsByQuery(Map<String, String> query) {
 		StringBuilder sql = new StringBuilder();
-		/*
-		 * sql.append("select * from restaurants")
-		 * .append("where category=:category") .append("and area=:area")
-		 * .append("and name %like% :keyword") .append("and avgprice>:lowprice")
-		 * .append("and avgprice<:highprice");
-		 */
-		sql.append("select * from restaurant");
+		Map<String, Object> parameters = new HashMap<String, Object>();
 
-		List<Restaurant> resultList = jdbcTemplate.query(sql.toString(), query,
+		sql.append("select * from restaurant where 1=1");
+		
+		if (isValid(query.get("keyword"))) {
+			parameters.put("keyword", "%"+query.get("keyword")+"%");
+			sql.append(" and name LIKE :keyword");
+		}
+		if (isValid(query.get("category")) && !query.get("category").equals("Category")) {
+			parameters.put("category", query.get("category"));
+			sql.append(" and category=:category");
+		}
+		if (isValid(query.get("area")) && !query.get("area").equals("Area")) {
+			parameters.put("area", query.get("area"));
+			sql.append(" and area=:area");
+		}
+		if (isValid(query.get("lowPrice"))) {
+			parameters.put("lowPrice", query.get("lowPrice"));
+			sql.append(" and avg_price>:lowPrice");
+		}
+		if (isValid(query.get("highPrice"))) {
+			parameters.put("highPrice", query.get("highPrice"));
+			sql.append(" and avg_price<:highPrice");
+		}
+
+		List<Restaurant> resultList = jdbcTemplate.query(sql.toString(), parameters,
 				new BeanPropertyRowMapper<Restaurant>(Restaurant.class));
 
 		return resultList;
+	}
+	
+	private boolean isValid(String value) {
+		return (value!=null && !value.equals(""));
 	}
 
 	public List<Restaurant> getRestaurantsByOwnerId(int ownerId) {
@@ -101,12 +122,12 @@ public class RestaurantDao extends BasicDao {
 
 		return rows > 0;
 	}
-	
+
 	public int getIdByNameNAddress(String name, String address) {
 		StringBuilder sql = new StringBuilder();
 		Map<String, Object> parameters = new HashMap<String, Object>();
-		sql.append("select id from restaurant")
-			.append(" where name=:name and address=:address");
+		sql.append("select id from restaurant").append(
+				" where name=:name and address=:address");
 		parameters.put("name", name);
 		parameters.put("address", address);
 
@@ -142,6 +163,37 @@ public class RestaurantDao extends BasicDao {
 		} else {
 			return -1;
 		}
+	}
+
+	public List<Restaurant> getRestWithMostReviews(int topN) {
+		StringBuilder sql = new StringBuilder();
+		Map<String, Object> parameters = new HashMap<String, Object>();
+		sql.append("select * from restaurant r")
+				.append(" where r.isApproved = 1")
+				.append(" order by (select count(*) from evaluate e")
+				.append(" where e.restaurant_id = r.id)")
+				.append(" desc limit :topN");
+		parameters.put("topN", topN);
+
+		List<Restaurant> resultList = jdbcTemplate.query(sql.toString(),
+				parameters, new BeanPropertyRowMapper<Restaurant>(
+						Restaurant.class));
+
+		return resultList;
+	}
+
+	public List<Restaurant> getRestaurantsByCategory(String category) {
+		StringBuilder sql = new StringBuilder();
+		Map<String, Object> parameters = new HashMap<String, Object>();
+		sql.append("select * from restaurant").append(
+				" where category=:category");
+		parameters.put("category", category);
+
+		List<Restaurant> resultList = jdbcTemplate.query(sql.toString(),
+				parameters, new BeanPropertyRowMapper<Restaurant>(
+						Restaurant.class));
+
+		return resultList;
 	}
 
 }

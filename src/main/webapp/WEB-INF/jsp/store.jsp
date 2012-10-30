@@ -54,34 +54,6 @@
     		$('#review-form').submit(function() {
     			return false;
     		});
-    		/*$('#review-form').submit(function() {
-    			$.post('review', $(this).serialize(), function(data) {
-    				var li,a,s1,s2;
-    				li = $('<li />');
-    				a = $('<a />');
-    				s1 = $('<span />',{
-    					class: "action"
-    				});
-    				s2 = $('<span />', {
-    					class: "downsize"
-    				});
-    				$.each(data, function(key, val) {
-    					if (key=="name") {
-    						s1.text(val);
-    					} else {
-    						s2.text(val);
-    					}
-    				});
-    				a.append(s1).append(s2).appendTo(li);
-    				li.prependTo($('.content'));
-    				$('textarea#review').text("");
-				},"json");
-				$('#paging_container').pajinate({
-    				num_page_links_to_display : 5,
-    				items_per_page:6
-    			});
-    			return false;
-    		});*/
     	});
     </script>
 </head>

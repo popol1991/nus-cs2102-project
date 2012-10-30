@@ -1,12 +1,4 @@
 $(document).ready(function() {
-    $('.search').submit(function() {
-      $.getJSON('./service/search?'+$(this).serialize(), function(data) {
-        $('#searchHeader').text("Search Results");
-        $('#searchResults').html('');
-        addRestaurantListToPage(data);
-      })
-      return false;
-    });
     $.getJSON('/tutorial/service/main/hotshops', function(data) {
         addRestaurantListToPage(data);
     })        
@@ -14,6 +6,8 @@ $(document).ready(function() {
 
 function addRestaurantListToPage(data) {
     var count = 0;
+    $('#restaurant_list_1').html("");
+    $('#restaurant_list_2').html("");
     $.each(data, function(index, obj) {
         var li = $('<li />');
         var a = $('<a />').appendTo(li);
