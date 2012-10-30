@@ -58,9 +58,9 @@
         <div class="whitewrapper">
           <div class="hd"></div>
           <div class="search" >
-            <form class="foodSearch">
+            <form class="foodSearch" method="post" action="service/search">
               <div class="dropdown-group" >
-                <p class="q-main-search"><input class="textSearchAdv" autocomplete="off" placeholder="Search restaurants, hawker, bars &amp; pubs" id="term" name="term" value="" type="text"><i class="icons ico-search"></i></p>
+                <p class="q-main-search"><input class="textSearchAdv" autocomplete="off" placeholder="Search restaurants, hawker, bars &amp; pubs" id="keyword" name="keyword" value="" type="text"><i class="icons ico-search"></i></p>
               </div>
               <div class="select" style="float:left;">
                   <select name="category" id="category">
@@ -80,10 +80,10 @@
                   </select>
               </div>
               <div class="low-price" >
-                <p class="q-main-search"><input class="textSearchAdv" autocomplete="off" placeholder="Minimal Price" id="term" name="term" value="" type="text"></p>
+                <p class="q-main-search"><input class="textSearchAdv" autocomplete="off" placeholder="Minimal Price" id="lowPrice" name="lowPrice" value="" type="text"></p>
               </div>
               <div class="high-price" >
-                <p class="q-main-search"><input class="textSearchAdv" autocomplete="off" placeholder="Maximal Price" id="term" name="term" value="" type="text"></p>
+                <p class="q-main-search"><input class="textSearchAdv" autocomplete="off" placeholder="Maximal Price" id="highPrice" name="highPrice" value="" type="text"></p>
               </div>
               <input type="submit" value="Search">
             </form>

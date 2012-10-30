@@ -498,12 +498,12 @@ nav .active {
 .contact-elsewhere a:hover .action {
   color: #9eb8c3;
 }
-.contact-elsewhere .page_navigation,
-.contact-elsewhere .alt_page_navigation {
+.page_navigation,
+.alt_page_navigation {
   padding-bottom: 10px;
 }
-.contact-elsewhere .page_navigation a,
-.contact-elsewhere .alt_page_navigation a{
+.page_navigation a,
+.alt_page_navigation a{
   padding:3px 5px;
   margin:2px;
   color:white;
@@ -609,10 +609,13 @@ div.whitewrapper {
 	-moz-box-shadow: 0 0 10px #bbb;
 	box-shadow: 0 0 10px #BBB;
 	margin-bottom: 30px;
-  overflow: auto;
 }
 .whitewrapper .hd {
 	border-top: 6px solid #D12026;
+}
+.whitewrapper li {
+  padding-left: 50px;
+  padding-right: 50px;
 }
 div.search {
   margin: 0px;
@@ -702,6 +705,17 @@ div.select {
   background-color: #00c0ff;
   cursor: pointer;
   outline: none;
+}
+ul#restaurant_list {
+  float: left;
+  width: 620px;
+}
+ul#restaurant_list li {
+  float: left;
+  width: 310px;
+}
+ul#restaurant_list li:nth-child(odd) {
+  clear: left;
 }
 /*button {
 	color: white;

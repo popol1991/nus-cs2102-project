@@ -71,5 +71,9 @@ public class RestaurantService {
 	public List<Restaurant> getAllRestaurants() {
 		return restDao.getAllRestaurants();
 	}
+
+	public List<Restaurant> getRestaurantsByCategory(String category) {
+		return restDao.getRestaurantsByCategory(category);
+	}
 	
 }

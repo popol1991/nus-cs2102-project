@@ -1,12 +1,4 @@
 $(document).ready(function() {
-    $('.search').submit(function() {
-      $.getJSON('./service/search?'+$(this).serialize(), function(data) {
-        $('#searchHeader').text("Search Results");
-        $('#searchResults').html('');
-        addRestaurantListToPage(data);
-      })
-      return false;
-    });
     $.getJSON('/tutorial/service/main/hotshops', function(data) {
         addRestaurantListToPage(data);
     })        

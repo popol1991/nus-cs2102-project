@@ -161,4 +161,17 @@ public class RestaurantDao extends BasicDao {
 		return resultList;
 	}
 
+	public List<Restaurant> getRestaurantsByCategory(String category) {
+		StringBuilder sql = new StringBuilder();
+		Map<String, Object> parameters = new HashMap<String, Object>();
+		sql.append("select * from restaurant").append(" where category=:category");
+		parameters.put("category", category);
+
+		List<Restaurant> resultList = jdbcTemplate.query(sql.toString(),
+				parameters, new BeanPropertyRowMapper<Restaurant>(
+						Restaurant.class));
+
+		return resultList;
+	}
+
 }
