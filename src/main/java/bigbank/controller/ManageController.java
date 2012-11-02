@@ -43,15 +43,16 @@ public class ManageController {
 	private String filePath;
 
 	@RequestMapping(method = RequestMethod.GET)
-	public String getRestaurantList(Model model) {
+	public String getMemberManagePage(Model model) {
 
 		User user = getCurrentUser();
 
 		if (user.getAuthority().equals("admin")) {
-			model.addAttribute("restList", restService.getAllRestaurants());
+			model.addAttribute("restList",
+					restService.getUnApprovedRestaurants());
 		} else {
 			model.addAttribute("restList",
-				restService.getRestaurantsByOwnerId(user.getId()));
+					restService.getRestaurantsByOwnerId(user.getId()));
 		}
 		return "manage";
 	}
@@ -116,9 +117,10 @@ public class ManageController {
 		model.addAttribute("newRestaurant", new Restaurant());
 		return "addnew";
 	}
-	
-	@RequestMapping(value = "/new", method = RequestMethod.POST) 
-	public String createNewRestaurant(@ModelAttribute Restaurant newRest, Model model) {
+
+	@RequestMapping(value = "/new", method = RequestMethod.POST)
+	public String createNewRestaurant(@ModelAttribute Restaurant newRest,
+			Model model) {
 		User user = getCurrentUser();
 		String authority = user.getAuthority();
 		if (authority.equals("admin")) {
@@ -132,14 +134,18 @@ public class ManageController {
 		if (restId != -1) {
 			saveTempImageWithId(restId);
 		}
-		model.addAttribute("restList",
-				restService.getRestaurantsByOwnerId(user.getId()));
+		if (authority.equals("admin")) {
+			model.addAttribute("restList", restService.getUnApprovedRestaurants());
+		} else {
+			model.addAttribute("restList",
+					restService.getRestaurantsByOwnerId(user.getId()));
+		}
 		return "manage";
 	}
 
 	private void saveTempImageWithId(int restId) {
 		File tempImage = new File(filePath);
-		File image = new File(IMAGE_PATH+restId+".jpeg");
+		File image = new File(IMAGE_PATH + restId + ".jpeg");
 		tempImage.renameTo(image);
 	}
 

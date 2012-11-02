@@ -25,6 +25,11 @@ public class MainController {
 		return restService.getTopRestaurants();
 	}
 	
+	@RequestMapping(value = "/stats", method = RequestMethod.GET)
+	public String getStatPage() {
+		return "stat";
+	}
+	
 	@RequestMapping(value = "/about", method= RequestMethod.GET)
 	public String getAboutPage() {
 		return "about";

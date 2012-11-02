@@ -25,22 +25,24 @@
     		});
     	});
     	function approve (restId) {
-          $.ajax({
-            url:"manage/approve/"+restId,
-            success: function(message) {
-              if (message == true) {
-                $('button.restId'+restId).remove();
-              } else {
-                alert("approve failed!");
-              }
-            }
-          });
+    	  var confirm = window.confirm("Confirm this restaurant proposal?");	
+          if (confirm) {$.ajax({
+            	url:"/tutorial/service/manage/approve/"+restId,
+            	success: function(message) {
+              	if (message == true) {
+               	 $('button.restId'+restId).remove();
+              	} else {
+            	    alert("approve failed!");
+        	      }
+    	        }
+ 	         });
+      	  }
       	};	
       function remove (restId) {
 	      var confirm = window.confirm("Are you sure to delete this restaurant?");
 	      if (confirm == true) {
 	        $.ajax({
-	          url:"manage/delete/"+restId,
+	          url:"/tutorial/service/manage/delete/"+restId,
 	          success: function(message) {
 	            if (message == true) {
 	              $('li#'+restId).remove();

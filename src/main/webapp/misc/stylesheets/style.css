@@ -598,6 +598,12 @@ footer {
   text-align: right;
   text-transform: uppercase;
 }
+footer a {
+  color: #fff;
+}
+footer a:hover {
+  color: #00c0ff;
+}
 footer p {
   padding: 0 20px;
 }

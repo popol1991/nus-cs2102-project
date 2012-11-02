@@ -75,5 +75,9 @@ public class RestaurantService {
 	public List<Restaurant> getRestaurantsByCategory(String category) {
 		return restDao.getRestaurantsByCategory(category);
 	}
+
+	public Object getUnApprovedRestaurants() {
+		return restDao.getUnApprovedRestaurants();
+	}
 	
 }

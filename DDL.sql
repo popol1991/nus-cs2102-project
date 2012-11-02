@@ -39,4 +39,12 @@ CREATE TABLE evaluate (
 	at_time DATE REFERENCES time(time),
 	comment VARCHAR(1024),
 	PRIMARY KEY (user_id, restaurant_id, at_time)
+);
+
+CREATE 
+VIEW own_restaurant (u_name,r_name,r_address)
+AS (
+	SELECT u.name, r.name, r.address
+        FROM user u, restaurant r
+        WHERE r.owner = u.id
 )
